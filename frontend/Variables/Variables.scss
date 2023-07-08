@@ -1,0 +1,16 @@
+$font-size: 16px;
+$font-family: "Imprima", sans-serif;
+$color: #523e27;
+$primary-color: #f0cc1e;
+$secondary-color: #005798;
+
+@mixin buttonAddStyle() {
+  width: 126px;
+  height: 55px;
+  background-color: $secondary-color;
+  color: $primary-color;
+  font-size: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  border: none;
+}
