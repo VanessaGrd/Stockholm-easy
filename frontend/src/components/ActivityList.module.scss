@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Imprima&display=swap");
+@import "../../Variables/Variables.scss";
+* {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  color: $color;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
