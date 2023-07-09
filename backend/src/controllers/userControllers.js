@@ -13,18 +13,19 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
+  const id = parseInt(req.params.id, 10);
   models.user
-    .find(req.params.id)
+    .find(id)
     .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
+      if (rows[0]) {
         res.send(rows[0]);
+      } else {
+        res.status(404).send("User not found");
       }
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500);
+      res.status(500).send("Erreur interne");
     });
 };
 
@@ -51,12 +52,12 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const user = req.body;
+  const newuser = req.body;
 
   // TODO validations (length, format...)
 
   models.user
-    .insert(user)
+    .insert(newuser)
     .then(([result]) => {
       res.location(`/users/${result.insertId}`).sendStatus(201);
     })
