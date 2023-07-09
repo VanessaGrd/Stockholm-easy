@@ -24,7 +24,6 @@ module.exports = router;
 // Activity
 const activityControllers = require("./controllers/activityControllers");
 
-
 router.get("/activity", activityControllers.browse);
 router.get("/activity/:id", activityControllers.read);
 router.post("/activity", activityControllers.add);
