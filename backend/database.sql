@@ -45,30 +45,25 @@ CREATE TABLE activity (
 	address	VARCHAR (225) NOT NULL,
   openingHours VARCHAR (45) NOT NULL,
 	price INT NOT NULL,
-	picture	VARCHAR(225) NOT NULL,
-    user_id INT NOT NULL,
-     CONSTRAINT fk_activity_user
-  FOREIGN KEY (user_id)
-  REFERENCES user(id)
+	picture	VARCHAR(225) NOT NULL
 )ENGINE=InnoDB;
 
 
 INSERT INTO 
-activity (name, address, openingHours, price, picture, user_id)
+activity (name, address, openingHours, price, picture)
 VALUES
 (
   'Musée Vasa',
   'Galärvarvsvägen 14 115 21 Stockholm',
 '10h00-17h00',
 '24',
-'https://cdn.pixabay.com/photo/2015/10/27/08/50/vasa-1008504_1280.jpg',
-"1"
+'https://cdn.pixabay.com/photo/2015/10/27/08/50/vasa-1008504_1280.jpg'
 ),
 (
   'Palais Royal',
   'Slottsbacken 1, Old Town (Gamla Stan)',
 '8h30-18h00',
 '19',
-'https://images.pexels.com/photos/5713891/pexels-photo-5713891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-"1"
+'https://images.pexels.com/photos/5713891/pexels-photo-5713891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+
 );
