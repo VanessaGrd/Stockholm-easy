@@ -44,7 +44,7 @@ CREATE TABLE activity (
  name VARCHAR(45) NOT NULL,
 	address	VARCHAR (225) NOT NULL,
   openingHours VARCHAR (45) NOT NULL,
-	price VARCHAR(45) NOT NULL,
+	price INT NOT NULL,
 	picture	VARCHAR(225) NOT NULL,
     user_id INT NOT NULL,
      CONSTRAINT fk_activity_user
@@ -59,8 +59,16 @@ VALUES
 (
   'Musée Vasa',
   'Galärvarvsvägen 14 115 21 Stockholm',
-'8h30-18h00',
-'190Kr/19€',
+'10h00-17h00',
+'24',
 'https://cdn.pixabay.com/photo/2015/10/27/08/50/vasa-1008504_1280.jpg',
+"1"
+),
+(
+  'Palais Royal',
+  'Slottsbacken 1, Old Town (Gamla Stan)',
+'8h30-18h00',
+'19',
+'https://images.pexels.com/photos/5713891/pexels-photo-5713891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 "1"
 );
