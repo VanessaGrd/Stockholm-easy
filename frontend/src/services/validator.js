@@ -13,7 +13,6 @@ const validationSchema = Yup.object({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Le mot de passe doit être identique")
     .required("*"),
-  birthdate: Yup.date().required("*"),
 });
 
 export default validationSchema;

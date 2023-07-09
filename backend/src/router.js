@@ -10,4 +10,13 @@ router.put("/items/:id", itemControllers.edit);
 router.post("/items", itemControllers.add);
 router.delete("/items/:id", itemControllers.destroy);
 
+// Users
+const userControllers = require("./controllers/userControllers");
+const { validateUser } = require("./services/validators");
+const { hashPassword } = require("./services/auth");
+
+router.get("/user", userControllers.browse);
+router.get("/user/:id", userControllers.read);
+router.post("/user", validateUser, hashPassword, userControllers.add);
+router.delete("/user/:id", userControllers.destroy);
 module.exports = router;

@@ -1,27 +1,28 @@
 import { useFormik } from "formik";
 import { Box, TextField } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import APIService from "../services/APIService";
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./RegisterForm.module.scss";
+import validationSchema from "../services/validator";
 
 export default function InscriptionForm() {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       firstname: "",
       lastname: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
-    /* validate(values) {
-      const errors = {};
-    }, */
+    validationSchema,
+
     onSubmit: () => {
-      APIService.post(`/users`, formik.values)
+      APIService.post(`/user`, formik.values)
         .then(() => {
-          toast.success("Le compte a été créé avec succès", {
-            position: toast.POSITION.TOP_CENTER,
-          });
+          navigate("/");
         })
         .catch((error) => {
           if (error.response?.status === 401) {
@@ -145,7 +146,7 @@ export default function InscriptionForm() {
             id="outlined-basic"
             label="Confirmation mot de passe"
             name="confirmPassword"
-            type="confirmPassword"
+            type="password"
             onChange={formik.handleChange}
             value={formik.values.confirmPassword}
           />{" "}
