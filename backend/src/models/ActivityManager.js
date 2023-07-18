@@ -27,6 +27,7 @@ class ActivityManager extends AbstractManager {
         activity.openingHours,
         activity.price,
         activity.picture,
+        activity.id,
       ]
     );
   }

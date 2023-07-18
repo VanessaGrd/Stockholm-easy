@@ -16,8 +16,6 @@ export default function ActivityList() {
       .catch((err) => console.error(err));
   }, []);
 
-  console.info(listActivities);
-
   return (
     <div className={styles.pageContainer}>
       <div className={styles.logo}>

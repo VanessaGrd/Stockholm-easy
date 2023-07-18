@@ -24,7 +24,14 @@ export default function AdminAdd() {
     onSubmit: () => {
       APIService.post(`/activity`, formik.values)
         .then(() => {
-          navigate("/admin-dashbord");
+          toast.success("L'activité a bien été ajoutée.", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000,
+            icon: "👍",
+          });
+          setTimeout(() => {
+            navigate("/admin-dashbord");
+          }, 3000);
         })
         .catch((error) => {
           if (error.response?.status === 401) {

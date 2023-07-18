@@ -7,11 +7,12 @@ export default function AdminDashbord() {
   const navigate = useNavigate();
 
   const handleAddClick = () => {
-    navigate("/admin-add");
+    navigate("/activity-add");
   };
   const handleModifyClick = () => {
-    navigate("/admin-modify");
+    navigate("/activity-modify");
   };
+
   return (
     <div className={styles.pageContainer}>
       <div className={styles.logo}>

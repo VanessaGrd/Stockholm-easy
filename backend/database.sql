@@ -6,7 +6,7 @@ CREATE TABLE user (
   lastname VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
   hashedPassword VARCHAR(255) NOT NULL, 
-  roles VARCHAR(45))
+  roles VARCHAR(45) DEFAULT 'user')
 ENGINE=InnoDB;
 
 INSERT INTO
@@ -16,7 +16,7 @@ VALUES
   'John',
   'Doe',
   'exemple@gmail.com',
-  '$argon2id$v=19$m=65536,t=5,p=1$+8QKgBU+Z7zr2EVICuFDOg$74Nu7DWmpa/+VW7543Xm28gd+ATVrhtCV2lAakJ4i+A',
+  '$argon2id$v=19$m=16,t=2,p=1$NmpzZHF0bThoMm4wMDAwMA$8b87F+A2+22XuoJ9EnyRiQ',
   'admin'
  
 ),
@@ -24,7 +24,7 @@ VALUES
   'Ariste',
   'Morin',
   'exemple1@gmail.com',
-  '$argon2id$v=19$m=65536,t=5,p=1$+8QKgBU+Z7zr2EVICuFDOg$74Nu7DWmpa/+VW7543Xm28gd+ATVrhtCV2lAakJ4i+A',
+  '$argon2id$v=19$m=16,t=2,p=1$YjE4ajE2eGIzbzcwMDAwMA$NA53PaJg0Gtp3GjCKLd/tA',
   'user'
  
 ),
@@ -32,9 +32,16 @@ VALUES
   'Séverine',
   'Vincent',
   'exemple2@gmail.com',
-  '$argon2id$v=19$m=65536,t=5,p=1$+8QKgBU+Z7zr2EVICuFDOg$74Nu7DWmpa/+VW7543Xm28gd+ATVrhtCV2lAakJ4i+A',
+  '$argon2id$v=19$m=16,t=2,p=1$MjBwOGdsNHRiczEwMDAwMA$eMTktr1H9Ns6MsAJ4Bz+Rg',
   'user'
   
+),
+(
+'Richard', 
+'Yann', 
+'yann.richard9@gmail.com', 
+'$argon2id$v=19$m=16,t=2,p=1$cXFnN2s1ZHU0aTAwMDAwMA$XFP3Vrp4/huxiy9p4p2EAw',
+'user'
 );
 
 DROP TABLE IF EXISTS activity;

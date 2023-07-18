@@ -6,6 +6,7 @@ import "./App.module.scss";
 import ActivityList from "./components/ActivityList";
 import AdminDashbord from "./pages/AdminDashbord";
 import AdminAdd from "./pages/AdminAdd";
+import ActivityModify from "./pages/ActivityModify";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       <Route path="/choice" element={<Choice />} />
       <Route path="/activities" element={<ActivityList />} />
       <Route path="/admin-dashbord" element={<AdminDashbord />} />
-      <Route path="/admin-add" element={<AdminAdd />} />
+      <Route path="/activity-add" element={<AdminAdd />} />
+      <Route path="/activity-modify" element={<ActivityModify />} />
     </Routes>
   );
 }
