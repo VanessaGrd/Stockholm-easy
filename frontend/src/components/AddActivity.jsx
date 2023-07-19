@@ -1,15 +1,15 @@
 import { React } from "react";
 import { useFormik } from "formik";
+import PropTypes from "prop-types";
 import { Box, TextField } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
 import APIService from "../services/APIService";
 import "react-toastify/dist/ReactToastify.css";
-import styles from "./AdminAdd.module.scss";
+import styles from "./AddActivity.module.scss";
 import validationSchema from "../services/validatorActivity";
 
-export default function AdminAdd() {
+export default function AddActivity({ setOpenAddModal }) {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -42,9 +42,16 @@ export default function AdminAdd() {
         });
     },
   });
+  const handleDeleteClose = () => {
+    setOpenAddModal(false);
+  };
   const boxStyle = {
     width: "70vw",
     height: "60vh",
+  };
+
+  const inputStyle = {
+    margin: "20px",
   };
   const handleClick = () => {
     if (!formik.isValid) {
@@ -62,16 +69,17 @@ export default function AdminAdd() {
   };
 
   return (
-    <div className={styles.pageContainer}>
-      <div className={styles.logo}>
-        <img src={logo} alt="logo" />
-      </div>
-
+    <div className={styles.modaleContainer}>
+      <button
+        type="button"
+        onClick={handleDeleteClose}
+        className={styles.buttonClose}
+      >
+        X
+      </button>
       <form className={styles.form} onSubmit={formik.handleSubmit}>
-        <h2>Tableau de bord</h2>
         <Box
           style={boxStyle}
-          display="flex"
           flexDirection="column"
           alignItems="center"
           justifyContent="space-between"
@@ -83,6 +91,7 @@ export default function AdminAdd() {
             justifyContent="space-between"
           >
             <TextField
+              style={inputStyle}
               id="outlined-basic"
               name="name"
               label="Nom"
@@ -101,6 +110,7 @@ export default function AdminAdd() {
             justifyContent="space-between"
           >
             <TextField
+              style={inputStyle}
               id="outlined-basic"
               label="Adresse"
               name="address"
@@ -119,6 +129,7 @@ export default function AdminAdd() {
             justifyContent="space-between"
           >
             <TextField
+              style={inputStyle}
               id="outlined-basic"
               label="Hoaires d'ouverture"
               name="openingHours"
@@ -138,6 +149,7 @@ export default function AdminAdd() {
             justifyContent="space-between"
           >
             <TextField
+              style={inputStyle}
               id="outlined-basic"
               label="Prix"
               name="price"
@@ -157,6 +169,7 @@ export default function AdminAdd() {
             justifyContent="space-between"
           >
             <TextField
+              style={inputStyle}
               id="outlined-basic"
               label="Image"
               name="picture"
@@ -167,15 +180,19 @@ export default function AdminAdd() {
             {formik.touched.picture && formik.errors.picture && (
               <div className={styles.error}>{formik.errors.picture}</div>
             )}{" "}
+            <div className={styles.button}>
+              <button type="submit" onClick={handleClick}>
+                Ajouter
+              </button>
+            </div>
           </Box>
-          <div className={styles.button}>
-            <button type="submit" onClick={handleClick}>
-              Ajouter
-            </button>
-          </div>
         </Box>
+
         <ToastContainer />
       </form>
     </div>
   );
 }
+AddActivity.propTypes = {
+  setOpenAddModal: PropTypes.bool.isRequired,
+};
