@@ -1,7 +1,53 @@
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
+import { useUserContext } from "../contexts/UserContext";
+import "react-toastify/dist/ReactToastify.css";
+import APIService from "../services/APIService";
 import styles from "./ActivityCard.module.scss";
 
 export default function ActivityCard({ activity }) {
+  const navigate = useNavigate();
+  const userContext = useUserContext();
+
+  const handleAddActivity = async (event) => {
+    event.preventDefault();
+    if (!userContext.user.id) {
+      toast.error("ID de l'utilisateur manquant !");
+      return;
+    }
+    const activityData = {
+      user_id: userContext.user.id,
+      activity_id: activity.id,
+    };
+    /* eslint-disable */
+
+    console.log("activityData:", activityData);
+
+    if (!activityData.activity_id) {
+      toast.error(
+        "Les informations d'utilisateur ou de session sont manquantes !"
+      );
+    } else {
+      try {
+        await APIService.post(`/program`, activityData);
+        toast.success("Votre activité a bien été enregistrée ! 👍", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        });
+        setTimeout(() => {
+          navigate("/program");
+        }, 3000);
+      } catch (error) {
+        toast.error(
+          "Une erreur s'est produite lors de l'enregistrement des vins de la recette !"
+        );
+        console.error(error);
+      }
+    }
+  };
+
   return (
     <div className={styles.activityButtonContainer}>
       <div className={styles.activity_card_container}>
@@ -15,7 +61,11 @@ export default function ActivityCard({ activity }) {
           <img src={activity.picture} alt={activity.name} />
         </div>{" "}
       </div>{" "}
-      <button className={styles.modifyButton} type="submit">
+      <button
+        onClick={handleAddActivity}
+        className={styles.modifyButton}
+        type="submit"
+      >
         Ajouter
       </button>
     </div>
@@ -25,6 +75,7 @@ export default function ActivityCard({ activity }) {
 ActivityCard.propTypes = {
   activity: PropTypes.shape({
     name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     address: PropTypes.string.isRequired,
     openingHours: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

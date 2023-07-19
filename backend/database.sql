@@ -74,3 +74,15 @@ VALUES
 'https://images.pexels.com/photos/5713891/pexels-photo-5713891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 
 );
+
+DROP TABLE IF EXISTS program;
+CREATE TABLE program (
+  id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  user_id INT(11) NOT NULL,
+  activity_id INT(11) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user(id),
+  FOREIGN KEY (activity_id) REFERENCES activity(id)
+) ENGINE=InnoDB;
+
+INSERT INTO program (user_id, activity_id)
+VALUES ( 2, 2);

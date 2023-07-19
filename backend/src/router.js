@@ -31,3 +31,14 @@ router.post("/activity", activityControllers.add);
 router.put("/activity/:id", activityControllers.edit);
 router.delete("/activity/:id", activityControllers.destroy);
 module.exports = router;
+
+// Program
+const programControllers = require("./controllers/programControllers");
+
+router.get("/program", programControllers.browse);
+router.get("/program-user/:id", programControllers.browseProgram);
+router.get("/program/:id", programControllers.read);
+router.post("/program", programControllers.add);
+router.put("/program/:id", programControllers.edit);
+router.delete("/program/:id", programControllers.destroy);
+module.exports = router;

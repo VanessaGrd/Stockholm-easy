@@ -1,22 +1,30 @@
-import { React } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import styles from "./Choice.module.scss";
+import axios from "axios";
+import Navbar from "../components/Navbar";
 import { useUserContext } from "../contexts/UserContext";
-import "react-toastify/dist/ReactToastify.css";
-import logoutButton from "../assets/logout.svg";
-import logo from "../assets/logo.png";
 
-export default function Choice() {
+import ActivityCard from "../components/ActivityCard";
+import "react-toastify/dist/ReactToastify.css";
+
+import styles from "./ActivityList.module.scss";
+import logo from "../assets/logo.png";
+import logoutButton from "../assets/logout.svg";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+export default function ActivityList() {
+  const [listActivities, setListActivities] = useState([]);
   const navigate = useNavigate();
   const { logout } = useUserContext();
+  useEffect(() => {
+    axios
+      .get(`${BACKEND_URL}/activity`)
+      .then((response) => setListActivities(response.data))
+      .catch((err) => console.error(err));
+  }, []);
 
-  const handleClick = () => {
-    navigate("/activities");
-  };
-  const handleClickProgram = () => {
-    navigate("/program");
-  };
   // Fonction de déconnexion
   const handleLogout = () => {
     logout();
@@ -25,6 +33,7 @@ export default function Choice() {
   };
   return (
     <div className={styles.pageContainer}>
+      <Navbar />
       <div className={styles.logo}>
         <img src={logo} alt="logo" />
       </div>
@@ -36,15 +45,10 @@ export default function Choice() {
         {" "}
         <img src={logoutButton} alt="logout-button" />
       </button>
-      <div className={styles.activityModal}>
-        <button type="button" onClick={handleClick}>
-          Activités
-        </button>
-      </div>
-      <div className={styles.programModal}>
-        <button type="button" onClick={handleClickProgram}>
-          Mon programme
-        </button>
+      <div className={styles.activity_list_container}>
+        {listActivities.map((activity) => (
+          <ActivityCard key={activity.id} activity={activity} />
+        ))}
       </div>
     </div>
   );
