@@ -48,3 +48,11 @@ $delete-color:red;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+@mixin logoutButton(){
+  position: absolute;
+  top:10px;
+  right: 10px;
+  border: none;
+  background-color: transparent;
+}

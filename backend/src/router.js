@@ -3,14 +3,14 @@ const express = require("express");
 const router = express.Router();
 const { validateLogin } = require("./services/validator");
 
-const { verifyPassword } = require("./services/auth");
+const { verifyPassword, verifyToken, logout } = require("./services/auth");
 
 const { getUserByEmailMiddleWare } = require("./controllers/authControllers");
 
 // Public routes
 // Auth
 router.post("/login", validateLogin, getUserByEmailMiddleWare, verifyPassword);
-
+router.get("/logout", verifyToken, logout);
 // Users
 const userControllers = require("./controllers/userControllers");
 const { validateUser } = require("./services/validators");

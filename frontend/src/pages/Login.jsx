@@ -38,7 +38,7 @@ export default function Login() {
       APIService.post(`/login`, formik.values)
         .then(({ data: user }) => {
           login(user);
-          if (user.roles === "user") {
+          if (user.role === "user") {
             toast.success(
               `Bienvenue ${user.firstname}! Vous allez être redirigé vers la page d'accueil.`,
               {
@@ -50,7 +50,7 @@ export default function Login() {
             setTimeout(() => {
               navigate("/choice");
             }, 3000);
-          } else if (user.roles === "admin") {
+          } else if (user.role === "admin") {
             toast.success(
               `Bienvenue ${user.firstname}! Vous allez être redirigé vers votre dashboard.`,
               {

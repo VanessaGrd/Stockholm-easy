@@ -15,7 +15,9 @@ export default function ActivityCard({ activity }) {
           <img src={activity.picture} alt={activity.name} />
         </div>{" "}
       </div>{" "}
-      <button type="submit">Ajouter</button>
+      <button className={styles.modifyAddButton} type="submit">
+        Ajouter
+      </button>
     </div>
   );
 }

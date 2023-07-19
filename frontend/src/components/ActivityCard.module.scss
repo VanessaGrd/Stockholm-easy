@@ -15,6 +15,10 @@
   flex-direction: column;
   margin-bottom: 20px;
  
+  .modifyAddButton{
+    @include buttonModifyStyle();
+   
+  }
   .buttonContainer{
     width: 100%;
     display: flex;
@@ -53,10 +57,13 @@
       height: 100%;
     }
   }
+
   .activity_card_container {
     display: flex;
     flex-direction: row;
     height: 100%;
     align-items: center;
+
+   
   }
 }
