@@ -7,28 +7,27 @@ class ActivityManager extends AbstractManager {
 
   insert(activity) {
     return this.database.query(
-      `insert into ${this.table} (name, address, openingHours, price, picture, user_id) values (?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (name, address, openingHours, price, picture) values (?, ?, ?, ?, ?)`,
       [
         activity.name,
         activity.address,
         activity.openingHours,
         activity.price,
         activity.picture,
-        activity.user_id,
       ]
     );
   }
 
   update(activity) {
     return this.database.query(
-      `update ${this.table} set name = ?, address = ?, openingHours = ?, price = ?, picture = ?, user_id = ? where id = ?`,
+      `update ${this.table} set name = ?, address = ?, openingHours = ?, price = ?, picture = ? where id = ?`,
       [
         activity.name,
         activity.address,
         activity.openingHours,
         activity.price,
         activity.picture,
-        activity.user_id,
+        activity.id,
       ]
     );
   }

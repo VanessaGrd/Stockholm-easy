@@ -1,26 +1,37 @@
-import { createContext, useMemo, useState, useContext } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import PropTypes from "prop-types";
+import APIService from "../services/APIService";
 
-export const UserContext = createContext();
+const UserContext = createContext();
 
-export default function UserProvider({ children }) {
-  const [user, setUser] = useState(null);
+export default UserContext;
 
-  const disconnectUser = () => {
-    setUser(null);
+export function UserContextProvider({ children }) {
+  const [user, setUser] = useState({});
+
+  const login = (_user) => {
+    setUser(_user);
   };
 
-  const userObj = useMemo(() => {
-    return { user, setUser, disconnectUser };
+  const logout = async () => {
+    try {
+      await APIService.get("/logout");
+      setUser({});
+      localStorage.removeItem("user");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const memo = useMemo(() => {
+    return { user, setUser, login, logout };
   }, [user]);
 
-  return (
-    <UserContext.Provider value={userObj}>{children}</UserContext.Provider>
-  );
+  return <UserContext.Provider value={memo}>{children}</UserContext.Provider>;
 }
 
 export const useUserContext = () => useContext(UserContext);
 
-UserProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+UserContextProvider.propTypes = {
+  children: PropTypes.shape().isRequired,
 };

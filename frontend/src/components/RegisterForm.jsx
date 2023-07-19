@@ -22,7 +22,7 @@ export default function InscriptionForm() {
     onSubmit: () => {
       APIService.post(`/user`, formik.values)
         .then(() => {
-          navigate("/");
+          navigate("/login");
         })
         .catch((error) => {
           if (error.response?.status === 401) {
