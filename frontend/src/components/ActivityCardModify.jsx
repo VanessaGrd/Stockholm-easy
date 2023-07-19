@@ -2,9 +2,12 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import styles from "./ActivityCard.module.scss";
 import EditActivity from "./EditActivity";
+import DeleteActivity from "./DeleteActivity";
 
 export default function ActivityCardModify({ activity }) {
   const [openModal, setOpenModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
   return (
     <div className={styles.activityButtonContainer}>
       <div className={styles.activity_card_container}>
@@ -18,16 +21,37 @@ export default function ActivityCardModify({ activity }) {
           <img src={activity.picture} alt={activity.name} />
         </div>{" "}
       </div>{" "}
-      <button type="submit" onClick={() => setOpenModal(true)}>
-        Modifier
-      </button>
-      {openModal && (
-        <EditActivity
-          setOpenModal={setOpenModal}
-          className={styles.modalcontainer}
-          selectedActivity={activity.id}
-        />
-      )}
+      <div className={styles.buttonContainer}>
+        <button
+          className={styles.modifyButton}
+          type="submit"
+          onClick={() => setOpenModal(true)}
+        >
+          Modifier
+        </button>
+        <button
+          className={styles.deleteButton}
+          type="submit"
+          onClick={() => setOpenDeleteModal(true)}
+        >
+          Supprimer
+        </button>
+        {openModal && (
+          <EditActivity
+            setOpenModal={setOpenModal}
+            className={styles.modalcontainer}
+            selectedActivity={activity.id}
+          />
+        )}
+
+        {openDeleteModal && (
+          <DeleteActivity
+            setOpenDeleteModal={setOpenDeleteModal}
+            className={styles.modalcontainer}
+            selectedActivity={activity.id}
+          />
+        )}
+      </div>
     </div>
   );
 }

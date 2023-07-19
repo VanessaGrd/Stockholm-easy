@@ -29,14 +29,15 @@ const hashPassword = (req, res, next) => {
     });
 };
 
-const verifyPassword = async (req, res, next) => {
+const verifyPassword = async (req, res) => {
   argon2
 
     .verify(req.user.hashedPassword, req.body.password)
 
     .then((isVerified) => {
       if (isVerified) {
-        const payload = { sub: req.user.id };
+        const payload = { sub: req.user.id, role: req.user.role || "user" };
+        /* eslint-disable */
         const token = jwt.sign(payload, JWT_SECRET, {
           expiresIn: JWT_TIMING,
         });
@@ -46,17 +47,13 @@ const verifyPassword = async (req, res, next) => {
         res.cookie("access_token", token, {
           httpOnly: true,
           secure: process.env.NODE_ENV === "production",
-        });
-
-        next();
-      } else {
-        res.sendStatus(401);
-      }
+        }).send(req.user);
+      } else res.sendStatus(401);
     })
-
     .catch((err) => {
+      // do something with err
       console.error(err);
-      res.sendStatus(500);
+      res.sendStatus(400);
     });
 };
 

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import APIService from "../services/APIService";
 import "react-toastify/dist/ReactToastify.css";
-import styles from "../pages/AdminAdd.module.scss";
+import styles from "./EditActivity.module.scss";
 
 const apiBaseUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -43,6 +43,11 @@ export default function EditActivity({
         );
 
         if (res) {
+          toast.success("L'activité a bien été modifiée.", {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000,
+            icon: "👍",
+          });
           useEffect(() => {
             axios
               .get(`${apiBaseUrl}/activity`)
@@ -54,7 +59,7 @@ export default function EditActivity({
         }
       } catch (err) {
         if (err.request?.status === 500) {
-          toast.error("Problème lors de l'inscription", {
+          toast.error("Problème lors de la modification de l'activité.", {
             position: toast.POSITION.TOP_CENTER,
           });
         }
@@ -72,12 +77,15 @@ export default function EditActivity({
     setOpenModal(false);
   };
   return (
-    <div className={styles.pageContainer}>
-      <button type="button" onClick={handleClose} className={styles.close}>
+    <div className={styles.modaleContainer}>
+      <button
+        type="button"
+        onClick={handleClose}
+        className={styles.buttonClose}
+      >
         X
       </button>
       <form className={styles.form}>
-        <h2>Tableau de bord</h2>
         <Box
           style={boxStyle}
           display="flex"
@@ -177,5 +185,5 @@ export default function EditActivity({
 EditActivity.propTypes = {
   setActivities: PropTypes.func.isRequired,
   selectedActivity: PropTypes.number.isRequired,
-  setOpenModal: PropTypes.string.isRequired,
+  setOpenModal: PropTypes.bool.isRequired,
 };

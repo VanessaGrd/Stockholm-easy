@@ -6,26 +6,26 @@ CREATE TABLE user (
   lastname VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
   hashedPassword VARCHAR(255) NOT NULL, 
-  roles VARCHAR(45) DEFAULT 'user')
+  role VARCHAR(45) DEFAULT 'user')
 ENGINE=InnoDB;
 
 INSERT INTO
-user (firstname, lastname, email, hashedPassword, roles)
+user (firstname, lastname, email, hashedPassword, role)
 VALUES
 (
-  'John',
-  'Doe',
+  "John",
+  "Doe",
   'exemple@gmail.com',
   '$argon2id$v=19$m=16,t=2,p=1$NmpzZHF0bThoMm4wMDAwMA$8b87F+A2+22XuoJ9EnyRiQ',
   'admin'
  
 ),
 (
-  'Ariste',
-  'Morin',
-  'exemple1@gmail.com',
-  '$argon2id$v=19$m=16,t=2,p=1$YjE4ajE2eGIzbzcwMDAwMA$NA53PaJg0Gtp3GjCKLd/tA',
-  'user'
+  "Ariste",
+  "Morin",
+  "exemple1@gmail.com",
+  "$argon2id$v=19$m=16,t=2,p=1$YjE4ajE2eGIzbzcwMDAwMA$NA53PaJg0Gtp3GjCKLd/tA",
+  "user"
  
 ),
 (

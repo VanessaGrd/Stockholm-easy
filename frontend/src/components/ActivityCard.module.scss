@@ -14,10 +14,22 @@
   padding: 5px;
   flex-direction: column;
   margin-bottom: 20px;
-  button {
-    @include buttonAddStyle;
-    background-color: $primary-color;
-    color: $secondary-color;
+ 
+  .buttonContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .modifyButton {
+      @include buttonAddStyle;
+      background-color: $primary-color;
+      color: $secondary-color;
+    }
+
+    .deleteButton{
+      @include buttonDeleteStyle;
+    }
   }
   .leftContainer {
     width: 60%;

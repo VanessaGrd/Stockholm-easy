@@ -3,10 +3,11 @@ $font-family: "Imprima", sans-serif;
 $color: #523e27;
 $primary-color: #f0cc1e;
 $secondary-color: #005798;
+$delete-color:red;
 
 @mixin buttonAddStyle() {
   width: 126px;
-  height: 55px;
+  height: 45px;
   background-color: $secondary-color;
   color: $primary-color;
   font-size: 20px;
@@ -17,9 +18,21 @@ $secondary-color: #005798;
 }
 @mixin buttonModifyStyle() {
   width: 126px;
-  height: 55px;
+  height: 45px;
   background-color: $primary-color;
   color: $secondary-color;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+@mixin buttonDeleteStyle() {
+  width: 126px;
+  height: 45px;
+  background-color: $delete-color;
+  color: black;
   font-size: 20px;
   font-weight: 700;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
