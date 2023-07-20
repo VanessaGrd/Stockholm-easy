@@ -1,3 +1,4 @@
+SET  FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS user;
 CREATE TABLE user (
@@ -43,6 +44,7 @@ VALUES
 '$argon2id$v=19$m=16,t=2,p=1$cXFnN2s1ZHU0aTAwMDAwMA$XFP3Vrp4/huxiy9p4p2EAw',
 'user'
 );
+SET  FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS activity;
 

@@ -4,7 +4,10 @@ import styles from "./ActivityCard.module.scss";
 import EditActivity from "./EditActivity";
 import DeleteActivity from "./DeleteActivity";
 
-export default function ActivityCardModify({ activity }) {
+export default function ActivityCardModify({
+  activity,
+  updateActivitiesAfterDelete,
+}) {
   const [openModal, setOpenModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [currentActivity, setCurrentActivity] = useState(activity); // Nouvel état pour stocker l'activité actuellement affichée
@@ -52,9 +55,15 @@ export default function ActivityCardModify({ activity }) {
 
         {openDeleteModal && (
           <DeleteActivity
-            setOpenDeleteModal={setOpenDeleteModal}
+            setOpenDeleteModal={(isOpen, deleteActivity) => {
+              setOpenDeleteModal(isOpen);
+              if (deleteActivity) {
+                setCurrentActivity(deleteActivity);
+              }
+            }}
             className={styles.modalcontainer}
             selectedActivity={activity.id}
+            updateActivitiesAfterDelete={updateActivitiesAfterDelete}
           />
         )}
       </div>
@@ -71,4 +80,5 @@ ActivityCardModify.propTypes = {
     price: PropTypes.number.isRequired,
     picture: PropTypes.string.isRequired,
   }).isRequired,
+  updateActivitiesAfterDelete: PropTypes.func.isRequired,
 };

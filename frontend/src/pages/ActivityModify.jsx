@@ -23,6 +23,14 @@ export default function ActivityModify() {
     toast.success("Déconnexion réussie !");
     navigate("/login");
   };
+
+  const updateActivitiesAfterDelete = () => {
+    axios
+      .get(`${apiBaseUrl}/activity`)
+      .then((response) => setActivities(response.data))
+      .catch((err) => console.error(err));
+  };
+
   useEffect(() => {
     axios
       .get(`${apiBaseUrl}/activity`)
@@ -52,6 +60,7 @@ export default function ActivityModify() {
             selectedActivity={selectedActivity}
             setSelectedActivity={setSelectedActivity}
             setActivities={setActivities}
+            updateActivitiesAfterDelete={updateActivitiesAfterDelete}
           />
         ))}
       </div>

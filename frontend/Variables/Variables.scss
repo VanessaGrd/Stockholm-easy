@@ -19,8 +19,9 @@ $delete-color:red;
 @mixin buttonModifyStyle() {
   width: 126px;
   height: 45px;
-  background-color: $primary-color;
-  color: $secondary-color;
+  background: rgb(255,255,255);
+background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(240,204,30,1) 73%, rgba(240,204,30,1) 100%);
+  color: $color;
   font-size: 20px;
   font-weight: 700;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -31,8 +32,8 @@ $delete-color:red;
 @mixin buttonDeleteStyle() {
   width: 126px;
   height: 45px;
-  background-color: $delete-color;
-  color: black;
+  
+  color: red;
   font-size: 20px;
   font-weight: 700;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -43,8 +44,10 @@ $delete-color:red;
   width: 321px;
   height: 248px;
   display: flex;
+  color: $color;
   align-items: center;
   justify-content: center;
+ 
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
