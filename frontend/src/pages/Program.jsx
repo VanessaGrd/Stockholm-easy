@@ -35,13 +35,12 @@ export default function Program() {
 
   return (
     <div>
-      <h1>Activités du programme de l'utilisateur</h1>
       {programActivities.map((activity) => (
         <div key={activity.program_id}>
-          {/* Afficher les détails de l'activité ici */}
-          <p>Nom de l'activité : {activity.activity_name}</p>
-          <p>Adresse de l'activité : {activity.activity_address}</p>
-          {/* ... Autres détails de l'activité ... */}
+          <p> {activity.activity_name}</p>
+          <p>Adresse : {activity.activity_address}</p>
+          <p>Horaires : {activity.activity_openingHours}</p>
+          <p>Prix : {activity.activity_price}€</p>
         </div>
       ))}
     </div>

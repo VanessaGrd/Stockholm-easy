@@ -1,11 +1,15 @@
 import React from "react";
 import Button from "@mui/material/Button";
+
 import Menu from "@mui/material/Menu";
 import { Link } from "react-router-dom";
+import { useUserContext } from "../contexts/UserContext";
+
 import menuburger from "../assets/menuburger.svg";
 import styles from "./MenuBurger.module.scss";
 
-export default function BasicMenu() {
+export default function MenuBurger() {
+  const { user } = useUserContext();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -42,7 +46,8 @@ export default function BasicMenu() {
           Accueil
         </Link>{" "}
         <br />
-        <Link to="/program" className={styles.menuLink}>
+        <Link to={`/program/${user.id}`} className={styles.menuLink}>
+          {" "}
           Mon programme
         </Link>
       </Menu>
