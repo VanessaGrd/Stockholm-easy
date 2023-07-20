@@ -92,7 +92,7 @@ export default function Login() {
   };
 
   return (
-    <>
+    <div className={styles.pageContainer}>
       <div className={styles.logo}>
         <img src={logo} alt="logo" />
       </div>
@@ -124,6 +124,6 @@ export default function Login() {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }

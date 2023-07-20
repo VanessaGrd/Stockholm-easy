@@ -10,6 +10,8 @@ export default function Register() {
         <img src={logo} alt="logo" />
       </div>
       <div className={styles.presentation}>
+        <h2>Hej ! Välkomna ! 👋</h2>
+        <br />
         <h3>
           Découvrez Stockholm à votre rythme avec notre application exclusive !
           <br />

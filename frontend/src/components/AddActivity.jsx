@@ -2,7 +2,7 @@ import { React } from "react";
 import { useFormik } from "formik";
 import PropTypes from "prop-types";
 import { Box, TextField } from "@mui/material";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import APIService from "../services/APIService";
 import "react-toastify/dist/ReactToastify.css";
@@ -35,7 +35,7 @@ export default function AddActivity({ setOpenAddModal }) {
         })
         .catch((error) => {
           if (error.response?.status === 401) {
-            toast.error("Problème lors de l'inscription", {
+            toast.error("Problème lors de l'ajout de l'activité", {
               position: toast.POSITION.TOP_CENTER,
             });
           }
@@ -70,6 +70,7 @@ export default function AddActivity({ setOpenAddModal }) {
 
   return (
     <div className={styles.modaleContainer}>
+      <h2>Ajoutez une nouvelle activité ! </h2>
       <button
         type="button"
         onClick={handleDeleteClose}
@@ -187,8 +188,6 @@ export default function AddActivity({ setOpenAddModal }) {
             </div>
           </Box>
         </Box>
-
-        <ToastContainer />
       </form>
     </div>
   );
