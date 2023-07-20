@@ -22,6 +22,7 @@ export default function EditActivity({
     picture: "",
   });
   useEffect(() => {
+    // Récupération des détails de l'activité sélectionnée
     APIService.get(`/activity/${selectedActivity}`)
       .then((response) => {
         setActivity(response.data);
@@ -31,11 +32,13 @@ export default function EditActivity({
   const boxStyle = {
     width: "70vw",
     height: "60vh",
-  };
+  }; // Fonction pour gérer la modification de l'activité
   const handleEdit = async (e) => {
     e.preventDefault();
+    // Vérifie si une activité est sélectionnée
     if (selectedActivity !== "") {
       try {
+        // Mise à jour de l'activité avec les nouvelles données
         const res = await APIService.put(
           `/activity/${selectedActivity}`,
           activity
@@ -47,11 +50,12 @@ export default function EditActivity({
             autoClose: 2000,
             icon: "👍",
           });
-
+          // Récupère la liste mise à jour des activités depuis l'API et met à jour l'état
           axios
             .get(`${apiBaseUrl}/activity`)
             .then((response) => setActivities(response.data))
             .catch((err) => console.error(err));
+          // Ferme le modal de l'édition avec l'activité modifiée
           setOpenModal(false, activity);
         } else {
           throw new Error();
@@ -65,13 +69,14 @@ export default function EditActivity({
       }
     }
   };
+  // Fonction pour gérer les changements dans le formulaire d'édition et mettre à jour l'état
   const handleChange = async (e) => {
     setActivity({
       ...activity,
       [e.target.name]: e.target.value,
     });
   };
-
+  // Fonction pour fermer la modal
   const handleClose = () => {
     setOpenModal(false);
   };
