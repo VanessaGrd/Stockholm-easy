@@ -1,7 +1,8 @@
 ## Concept
 
-This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying as simple as possible to use.
+This application aims to introduce tourists to the city of Stockholm.
+You will be able to find in it a user part and an administrator part.
+The stack used is React/JS, Express, Node, SQL, HTML, SCSS.
 
 ## Setup & Use
 
@@ -22,6 +23,31 @@ git config --global core.autocrlf false
 - Run command `npm install`
 - _NB: To launch the backend server, you'll need an environment file with database credentials. You'll find a template one in `backend/.env.sample`_
 
+## Packages to add 
+Frontend :
+"@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.7",
+    "@vitejs/plugin-react": "^3.0.1",
+    "axios": "^1.4.0",
+    "formik": "^2.4.2",
+    "material-ui-popup-state": "^5.0.9",
+    "openai": "^3.3.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-toastify": "^9.1.3",
+    "uuid": "^9.0.0",
+    "yup": "^1.2.0"4
+    
+Backend : 
+  "argon2": "^0.30.3",
+    "axios": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "jsonwebtoken": "^9.0.1",
+    "mysql2": "^3.5.0",
+    "yup": "^1.2.0"
+
+    
 ### Available Commands
 
 - `migrate` : Run the database migration script
