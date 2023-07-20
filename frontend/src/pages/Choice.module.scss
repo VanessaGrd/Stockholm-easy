@@ -29,11 +29,14 @@ body {
   background-position: center;
   background-size: cover;
   @include modalStyle();
+  margin-top: 20px;
+
 
   button {
     @include buttonAddStyle;
     background-color: $primary-color;
     color: $color;
+    cursor: pointer;
   }
 }
   .programModal{
@@ -49,6 +52,43 @@ body {
       color: $color;
       width: auto;
       padding: 10px;
+      cursor: pointer;
     }
   }
 
+  .eatModal {
+    background-image: url("https://cdn.pixabay.com/photo/2017/06/09/19/35/smorgastarta-2388075_1280.jpg");
+    background-position: center;
+    background-size: cover;
+    @include modalStyle();
+    margin-top: 20px;
+  
+    button {
+      @include buttonAddStyle;
+      background-color: $primary-color;
+      color: $color;
+    }
+  }
+  .sleepModal {
+    background-image: url("https://images.pexels.com/photos/33612/sailboat-water-stockholm-ship.jpg?auto=compress&cs=tinysrgb&w=1600");
+    background-position: center;
+    background-size: cover;
+    @include modalStyle();
+    margin-top: 20px;
+  
+    button {
+      @include buttonAddStyle;
+      background-color: $primary-color;
+      color: $color;
+      
+    }
+  }
+ 
+  @media screen and (min-width :750px) {
+    .modalesContainer{
+      display: flex; /* Afficher les activités en ligne (en "row") */
+      flex-wrap: wrap; /* Permettre à la ligne de se casser si nécessaire */
+      justify-content: space-around; /* Aligner les activités avec un espace entre elles */
+      gap: 20px; /* Ajouter un espace de 20px entre chaque activité */
+    }
+  }

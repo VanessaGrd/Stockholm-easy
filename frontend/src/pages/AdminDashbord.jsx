@@ -37,32 +37,75 @@ export default function AdminDashbord() {
         {" "}
         <img src={logoutButton} alt="logout-button" />
       </button>
-      <div className={styles.activityModal}>
-        <div>Activités</div>
-        <div className={styles.buttonContainer}>
-          <button
-            className={styles.buttonAdd}
-            type="submit"
-            onClick={() => setOpenAddModal(true)}
-          >
-            Ajouter
-          </button>
+      <div className={styles.modalesContainer}>
+        <div className={styles.activityModal}>
+          <div>Activités</div>
+          <div className={styles.buttonContainer}>
+            <button
+              className={styles.buttonAdd}
+              type="submit"
+              onClick={() => setOpenAddModal(true)}
+            >
+              Ajouter
+            </button>
 
-          <button
-            className={styles.buttonModify}
-            type="submit"
-            onClick={handleModifyClick}
-          >
-            Modifier
-          </button>
+            <button
+              className={styles.buttonModify}
+              type="submit"
+              onClick={handleModifyClick}
+            >
+              Modifier
+            </button>
+          </div>
+        </div>
+        {openAddModal && (
+          <AddActivity
+            setOpenAddModal={setOpenAddModal}
+            className={styles.modaleContainer}
+          />
+        )}
+
+        <div className={styles.eatModal}>
+          <div>Où manger ?</div>
+          <div className={styles.buttonContainer}>
+            <button
+              className={styles.buttonAdd}
+              type="submit"
+              onClick={() => setOpenAddModal(true)}
+            >
+              Ajouter
+            </button>
+
+            <button
+              className={styles.buttonModify}
+              type="submit"
+              onClick={handleModifyClick}
+            >
+              Modifier
+            </button>
+          </div>
+        </div>
+        <div className={styles.sleepModal}>
+          <div>Où dormir ?</div>
+          <div className={styles.buttonContainer}>
+            <button
+              className={styles.buttonAdd}
+              type="submit"
+              onClick={() => setOpenAddModal(true)}
+            >
+              Ajouter
+            </button>
+
+            <button
+              className={styles.buttonModify}
+              type="submit"
+              onClick={handleModifyClick}
+            >
+              Modifier
+            </button>
+          </div>
         </div>
       </div>
-      {openAddModal && (
-        <AddActivity
-          setOpenAddModal={setOpenAddModal}
-          className={styles.modaleContainer}
-        />
-      )}
     </div>
   );
 }

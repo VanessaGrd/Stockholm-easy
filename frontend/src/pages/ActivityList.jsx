@@ -47,7 +47,9 @@ export default function ActivityList() {
       </button>
       <div className={styles.activity_list_container}>
         {listActivities.map((activity) => (
-          <ActivityCard key={activity.id} activity={activity} />
+          <div className={styles.modalesContainer}>
+            <ActivityCard key={activity.id} activity={activity} />
+          </div>
         ))}
       </div>
     </div>

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import { toast } from "react-toastify";
-import React from "react"; // Import useEffect and useState
 import { useUserContext } from "../contexts/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 import APIService from "../services/APIService";
@@ -8,6 +8,7 @@ import styles from "./ActivityCard.module.scss";
 
 export default function ActivityCard({ activity }) {
   const userContext = useUserContext();
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleAddActivity = async (event) => {
     event.preventDefault();
@@ -27,9 +28,6 @@ export default function ActivityCard({ activity }) {
 
       activity_price: activity.price,
     };
-    /* eslint-disable */
-
-    console.log("activityData:", activityData);
 
     if (!activityData.activity_id) {
       toast.error(
@@ -37,12 +35,12 @@ export default function ActivityCard({ activity }) {
       );
     } else {
       try {
+        setIsButtonDisabled(true);
         await APIService.post(`/program`, activityData);
         toast.success("Votre activité a bien été enregistrée ! 👍", {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 2000,
         });
-        
       } catch (error) {
         toast.error(
           "Une erreur s'est produite lors de l'enregistrement des vins de la recette !"
@@ -69,6 +67,7 @@ export default function ActivityCard({ activity }) {
         onClick={handleAddActivity}
         className={styles.modifyButton}
         type="submit"
+        disabled={isButtonDisabled}
       >
         Ajouter
       </button>

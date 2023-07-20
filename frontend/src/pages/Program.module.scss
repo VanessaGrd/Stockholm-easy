@@ -20,5 +20,60 @@
 
   .logoutButton {
     @include logoutButton();
+    cursor: pointer;
+
     }
+    h2{
+      margin-bottom: 20px;
+      margin-top: 30px;
+     }
+  .activity_card_container {
+    display: flex;
+    background: rgb(0,87,152);
+    background: linear-gradient(90deg, rgba(0,87,152,1) 0%, rgba(0,87,152,1) 36%, rgba(255,255,255,1) 100%);;  padding: 5px;
+    flex-direction: row;
+    margin-bottom: 20px;
+    width: 321px;
+    height: 248px;
+    color: $color;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+
+    .leftContainer {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      h2 {
+        color: $primary-color;
+        margin-top: 10px;
+      }
+      p {
+        color: $primary-color;
+      }
+    }
+    .rightContainer {
+      width: 30%;
+      height: 80%;
+      align-items: flex-end;
+      img {
+        width: 100px;
+        height: 100%;
+      }
+    }
+
+
+  }
+}
+@media screen and (min-width :750px) {
+  .activity_list_container {
+    display: flex; /* Afficher les activités en ligne (en "row") */
+    flex-wrap: wrap; /* Permettre à la ligne de se casser si nécessaire */
+    justify-content: space-around; /* Aligner les activités avec un espace entre elles */
+    gap: 20px; /* Ajouter un espace de 20px entre chaque activité */
+  }
 }

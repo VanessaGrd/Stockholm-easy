@@ -10,15 +10,15 @@
 .activityButtonContainer {
   display: flex;
   @include modalStyle;
-  background: rgb(0,87,152);
-  background: linear-gradient(90deg, rgba(0,87,152,1) 0%, rgba(0,87,152,1) 36%, rgba(255,255,255,1) 100%);;  padding: 5px;
+  background-color: $secondary-color;
   flex-direction: column;
   margin-bottom: 20px;
  
   .modifyButton{
     @include buttonModifyStyle();
     color: $secondary-color;
-   
+   margin-bottom: 10px;
+   cursor: pointer;
   }
   .buttonContainer{
     width: 100%;
@@ -30,10 +30,14 @@
       @include buttonAddStyle;
       background-color: $primary-color;
       color: $secondary-color;
+      cursor: pointer;
+
     }
 
     .deleteButton{
       @include buttonDeleteStyle;
+      cursor: pointer;
+
     }
   }
   .leftContainer {
@@ -64,6 +68,7 @@
     flex-direction: row;
     height: 100%;
     align-items: center;
+    padding: 10px;
 
    
   }

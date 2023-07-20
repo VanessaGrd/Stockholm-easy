@@ -20,6 +20,7 @@ export default function DeleteActivity({
         if (verifyProgram && verifyProgram.data.length > 0) {
           // Si l'activité est présente dans la table "program", supprimer d'abord de "program"
           await APIService.delete(`/program/${selectedActivity}`);
+          await APIService.delete(`/activity/${selectedActivity}`);
         } else {
           // Si l'activité n'est pas présente dans la table "program", supprimer directement de "activity"
           await APIService.delete(`/activity/${selectedActivity}`);

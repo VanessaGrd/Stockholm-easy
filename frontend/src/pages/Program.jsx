@@ -1,20 +1,20 @@
 import "react-toastify/dist/ReactToastify.css";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-// import MenuBurger from "../components/MenuBurger";
+import MenuBurger from "../components/MenuBurger";
 
-// import { useProgramContext } from "../contexts/ProgramContext";
-// import { useUserContext } from "../contexts/UserContext";
-// import styles from "./Program.module.scss";
-// import logoutButton from "../assets/logout.svg";
-// import logo from "../assets/logo.png";
+import { useUserContext } from "../contexts/UserContext";
+import styles from "./Program.module.scss";
+import logoutButton from "../assets/logout.svg";
+import logo from "../assets/logo.png";
+
 const apiBaseUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function Program() {
-  //  const navigate = useNavigate();
-  // const { logout } = useUserContext();
+  const navigate = useNavigate();
+  const { logout } = useUserContext();
   const [programActivities, setProgramActivities] = useState();
   const { id } = useParams();
 
@@ -27,22 +27,46 @@ export default function Program() {
 
   if (!programActivities) return null;
 
-  // const handleLogout = () => {
-  // logout();
-  // toast.success("Déconnexion réussie !");
-  // navigate("/login");
-  // };
+  const handleLogout = () => {
+    logout();
+    toast.success("Déconnexion réussie !");
+    navigate("/login");
+  };
 
   return (
-    <div>
-      {programActivities.map((activity) => (
-        <div key={activity.program_id}>
-          <p> {activity.activity_name}</p>
-          <p>Adresse : {activity.activity_address}</p>
-          <p>Horaires : {activity.activity_openingHours}</p>
-          <p>Prix : {activity.activity_price}€</p>
-        </div>
-      ))}
+    <div className={styles.pageContainer}>
+      <MenuBurger />
+      <div className={styles.logo}>
+        <img src={logo} alt="logo" />
+      </div>
+      <button
+        className={styles.logoutButton}
+        type="button"
+        onClick={handleLogout}
+      >
+        {" "}
+        <img src={logoutButton} alt="logout-button" />
+      </button>
+      <h2>Mon programme</h2>
+      <div className={styles.activity_list_container}>
+        {programActivities.map((activity) => (
+          <div className={styles.activity_card_container}>
+            <div key={activity.program_id} className={styles.leftContainer}>
+              <h2> {activity.activity_name}</h2>
+              <p>Adresse : {activity.activity_address}</p>
+              <p>Horaires : {activity.activity_openingHours}</p>
+              <p>Prix : {activity.activity_price}€</p>
+            </div>
+
+            <div className={styles.rightContainer}>
+              <img
+                src={activity.activity_picture}
+                alt={activity.activity_name}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
