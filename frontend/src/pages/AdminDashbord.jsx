@@ -1,13 +1,15 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useUserContext } from "../contexts/UserContext";
 import logoutButton from "../assets/logout.svg";
 import styles from "./AdminDashbord.module.scss";
 import logo from "../assets/logo.png";
+import AddActivity from "../components/AddActivity";
 
 export default function AdminDashbord() {
   const navigate = useNavigate();
+  const [openAddModal, setOpenAddModal] = useState(false);
 
   const { logout } = useUserContext();
 
@@ -17,9 +19,7 @@ export default function AdminDashbord() {
     toast.success("Déconnexion réussie !");
     navigate("/login");
   };
-  const handleAddClick = () => {
-    navigate("/activity-add");
-  };
+
   const handleModifyClick = () => {
     navigate("/activity-modify");
   };
@@ -43,10 +43,11 @@ export default function AdminDashbord() {
           <button
             className={styles.buttonAdd}
             type="submit"
-            onClick={handleAddClick}
+            onClick={() => setOpenAddModal(true)}
           >
             Ajouter
           </button>
+
           <button
             className={styles.buttonModify}
             type="submit"
@@ -56,6 +57,12 @@ export default function AdminDashbord() {
           </button>
         </div>
       </div>
+      {openAddModal && (
+        <AddActivity
+          setOpenAddModal={setOpenAddModal}
+          className={styles.modaleContainer}
+        />
+      )}
     </div>
   );
 }

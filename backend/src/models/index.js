@@ -43,6 +43,11 @@ const ActivityManager = require("./ActivityManager");
 
 models.activity = new ActivityManager();
 models.activity.setDatabase(pool);
+
+const ProgramManager = require("./ProgramManager");
+
+models.program = new ProgramManager();
+models.program.setDatabase(pool);
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 

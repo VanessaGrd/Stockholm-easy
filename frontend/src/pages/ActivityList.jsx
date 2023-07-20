@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
 import axios from "axios";
+import MenuBurger from "../components/MenuBurger";
 import { useUserContext } from "../contexts/UserContext";
 
-import ActivityCard from "./ActivityCard";
+import ActivityCard from "../components/ActivityCard";
 import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./ActivityList.module.scss";
@@ -33,6 +33,7 @@ export default function ActivityList() {
   };
   return (
     <div className={styles.pageContainer}>
+      <MenuBurger />
       <div className={styles.logo}>
         <img src={logo} alt="logo" />
       </div>

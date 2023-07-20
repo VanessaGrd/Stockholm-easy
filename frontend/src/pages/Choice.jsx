@@ -14,7 +14,9 @@ export default function Choice() {
   const handleClick = () => {
     navigate("/activities");
   };
-
+  const handleClickProgram = () => {
+    navigate("/program");
+  };
   // Fonction de déconnexion
   const handleLogout = () => {
     logout();
@@ -37,6 +39,11 @@ export default function Choice() {
       <div className={styles.activityModal}>
         <button type="button" onClick={handleClick}>
           Activités
+        </button>
+      </div>
+      <div className={styles.programModal}>
+        <button type="button" onClick={handleClickProgram}>
+          Mon programme
         </button>
       </div>
     </div>

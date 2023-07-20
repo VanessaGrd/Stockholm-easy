@@ -7,8 +7,9 @@ const UserContext = createContext();
 export default UserContext;
 
 export function UserContextProvider({ children }) {
-  const [user, setUser] = useState({});
-
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user") || "{}")
+  );
   const login = (_user) => {
     setUser(_user);
   };

@@ -3,10 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useUserContext } from "../contexts/UserContext";
-import styles from "../components/ActivityList.module.scss";
+import styles from "./ActivityList.module.scss";
 import logoutButton from "../assets/logout.svg";
 import logo from "../assets/logo.png";
 import ActivityCardModify from "../components/ActivityCardModify";
+import MenuBurgerAdmin from "../components/MenuBurgerAdmin";
 
 const apiBaseUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -31,6 +32,7 @@ export default function ActivityModify() {
 
   return (
     <div className={styles.pageContainer}>
+      <MenuBurgerAdmin />
       <div className={styles.logo}>
         <img src={logo} alt="logo" />
       </div>
