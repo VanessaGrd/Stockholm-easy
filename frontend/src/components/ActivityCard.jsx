@@ -10,10 +10,14 @@ export default function ActivityCard({ activity }) {
   const userContext = useUserContext();
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
+  // ajout de l'activité à la liste de l'utilisateur
   const handleAddActivity = async (event) => {
     event.preventDefault();
+    // vérification si l'id de l'utilisateur est présent dans le contexte utilisateur
     if (!userContext.user.id) {
-      toast.error("ID de l'utilisateur manquant !");
+      toast.error(
+        "Une information de l'utilisateur est manquante empêchant l'ajout de l'activité dans le programme !"
+      );
       return;
     }
     const activityData = {
@@ -28,14 +32,16 @@ export default function ActivityCard({ activity }) {
 
       activity_price: activity.price,
     };
-
+    // Vérification si l'id de l'activité est dans "activityData"
     if (!activityData.activity_id) {
       toast.error(
         "Les informations d'utilisateur ou de session sont manquantes !"
       );
     } else {
       try {
+        // Désactiver le bouton d'ajout après click
         setIsButtonDisabled(true);
+        // Ajout de l'activité au programme de l'utilisateur
         await APIService.post(`/program`, activityData);
         toast.success("Votre activité a bien été enregistrée ! 👍", {
           position: toast.POSITION.TOP_CENTER,
@@ -43,7 +49,7 @@ export default function ActivityCard({ activity }) {
         });
       } catch (error) {
         toast.error(
-          "Une erreur s'est produite lors de l'enregistrement des vins de la recette !"
+          "Une erreur s'est produite lors de l'enregistrement de l'activité dans le programme !"
         );
         console.error(error);
       }

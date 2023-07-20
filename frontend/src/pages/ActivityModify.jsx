@@ -23,14 +23,14 @@ export default function ActivityModify() {
     toast.success("Déconnexion réussie !");
     navigate("/login");
   };
-
+  // mise à jour de la liste d"activités après une suppression
   const updateActivitiesAfterDelete = () => {
     axios
       .get(`${apiBaseUrl}/activity`)
       .then((response) => setActivities(response.data))
       .catch((err) => console.error(err));
   };
-
+  // 2ème requête pour refresh la liste d'activités
   useEffect(() => {
     axios
       .get(`${apiBaseUrl}/activity`)

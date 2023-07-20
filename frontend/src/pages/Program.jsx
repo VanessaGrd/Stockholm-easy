@@ -17,7 +17,7 @@ export default function Program() {
   const { logout } = useUserContext();
   const [programActivities, setProgramActivities] = useState();
   const { id } = useParams();
-
+  // récupère les informations du program en fonction du user_id
   useEffect(() => {
     axios
       .get(`${apiBaseUrl}/program-user/${id}`)
