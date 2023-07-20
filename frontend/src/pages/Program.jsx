@@ -1,37 +1,31 @@
 import "react-toastify/dist/ReactToastify.css";
 // import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
-
+import { useParams } from "react-router-dom";
+import axios from "axios";
 // import MenuBurger from "../components/MenuBurger";
 
 // import { useProgramContext } from "../contexts/ProgramContext";
-import { useUserContext } from "../contexts/UserContext";
+// import { useUserContext } from "../contexts/UserContext";
 // import styles from "./Program.module.scss";
 // import logoutButton from "../assets/logout.svg";
 // import logo from "../assets/logo.png";
-import APIService from "../services/APIService";
+const apiBaseUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function Program() {
   //  const navigate = useNavigate();
   // const { logout } = useUserContext();
-  const userContext = useUserContext();
-  const [programActivities, setProgramActivities] = useState([]);
+  const [programActivities, setProgramActivities] = useState();
+  const { id } = useParams();
 
   useEffect(() => {
-    // Récupérer les activités du programme de l'utilisateur en utilisant l'ID de l'utilisateur
-    const fetchProgramActivities = async () => {
-      try {
-        const response = await APIService.get(
-          `/program-user/${userContext.user.id}`
-        );
-        setProgramActivities(response.data);
-      } catch (error) {
-        console.error(error);
-        // Gérer les erreurs de récupération des activités du programme ici
-      }
-    };
-    fetchProgramActivities();
-  }, [userContext.user.id]);
+    axios
+      .get(`${apiBaseUrl}/program-user/${id}`)
+      .then((response) => setProgramActivities(response.data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  if (!programActivities) return null;
 
   // const handleLogout = () => {
   // logout();
