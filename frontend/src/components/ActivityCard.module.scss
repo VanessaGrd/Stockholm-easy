@@ -17,6 +17,7 @@
  
   .modifyButton{
     @include buttonModifyStyle();
+    color: $secondary-color;
    
   }
   .buttonContainer{

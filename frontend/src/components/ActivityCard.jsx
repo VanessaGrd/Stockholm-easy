@@ -1,14 +1,12 @@
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-
+import React from "react"; // Import useEffect and useState
 import { useUserContext } from "../contexts/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 import APIService from "../services/APIService";
 import styles from "./ActivityCard.module.scss";
 
 export default function ActivityCard({ activity }) {
-  const navigate = useNavigate();
   const userContext = useUserContext();
 
   const handleAddActivity = async (event) => {
@@ -44,9 +42,7 @@ export default function ActivityCard({ activity }) {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 2000,
         });
-        setTimeout(() => {
-          navigate("/program");
-        }, 3000);
+        
       } catch (error) {
         toast.error(
           "Une erreur s'est produite lors de l'enregistrement des vins de la recette !"

@@ -12,8 +12,9 @@ const browse = (req, res) => {
     });
 };
 const browseProgram = (req, res) => {
+  const userId = req.params.id;
   models.program
-    .findActivityByUserId()
+    .findActivityByUserId(userId)
     .then(([rows]) => {
       res.send(rows);
     })
