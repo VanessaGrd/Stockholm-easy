@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { Box, TextField } from "@mui/material";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import axios from "axios";
 import APIService from "../services/APIService";
@@ -27,8 +27,7 @@ export default function EditActivity({
         setActivity(response.data);
       })
       .catch((error) => console.error(error));
-  }, []);
-
+  }, [selectedActivity]);
   const boxStyle = {
     width: "70vw",
     height: "60vh",
@@ -48,12 +47,12 @@ export default function EditActivity({
             autoClose: 2000,
             icon: "👍",
           });
-          useEffect(() => {
-            axios
-              .get(`${apiBaseUrl}/activity`)
-              .then((response) => setActivities(response.data))
-              .catch((err) => console.error(err));
-          }, []);
+
+          axios
+            .get(`${apiBaseUrl}/activity`)
+            .then((response) => setActivities(response.data))
+            .catch((err) => console.error(err));
+          setOpenModal(false, activity);
         } else {
           throw new Error();
         }
@@ -176,7 +175,6 @@ export default function EditActivity({
             </button>
           </div>
         </Box>
-        <ToastContainer />
       </form>
     </div>
   );

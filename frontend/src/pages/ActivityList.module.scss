@@ -20,5 +20,14 @@
 
   .logoutButton {
     @include logoutButton();
+    cursor: pointer;
     }
+}
+@media screen and (min-width :750px) {
+  .activity_list_container {
+    display: flex; /* Afficher les activités en ligne (en "row") */
+    flex-wrap: wrap; /* Permettre à la ligne de se casser si nécessaire */
+    justify-content: space-around; /* Aligner les activités avec un espace entre elles */
+    gap: 20px; /* Ajouter un espace de 20px entre chaque activité */
+  }
 }

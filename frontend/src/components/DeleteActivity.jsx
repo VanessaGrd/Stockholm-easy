@@ -3,28 +3,35 @@ import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import APIService from "../services/APIService";
 import "react-toastify/dist/ReactToastify.css";
-import styles from "./DeleteActivity.module.scss";
+import styles from "./EditActivity.module.scss";
 
 export default function DeleteActivity({
   setOpenDeleteModal,
   selectedActivity,
+  updateActivitiesAfterDelete,
 }) {
   const handleDelete = async () => {
     if (selectedActivity !== "") {
-      // verifie qu'une note a bien été sélectionnée
       try {
-        const res = await APIService.delete(`/activity/${selectedActivity}`);
-        if (res) {
-          toast
-            .success("L'activité a bien été supprimée.", {
-              position: toast.POSITION.TOP_CENTER,
-              autoClose: 2000,
-              icon: "👍",
-            })
-            .catch((error) => console.error(error));
+        const verifyProgram = await APIService.get(
+          `/program-user/${selectedActivity}`
+        );
+
+        if (verifyProgram && verifyProgram.data.length > 0) {
+          // Si l'activité est présente dans la table "program", supprimer d'abord de "program"
+          await APIService.delete(`/program/${selectedActivity}`);
+          await APIService.delete(`/activity/${selectedActivity}`);
         } else {
-          throw new Error();
+          // Si l'activité n'est pas présente dans la table "program", supprimer directement de "activity"
+          await APIService.delete(`/activity/${selectedActivity}`);
         }
+        toast.success("L'activité a bien été supprimée.", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+          icon: "👍",
+        });
+        setOpenDeleteModal(false);
+        updateActivitiesAfterDelete();
       } catch (error) {
         if (error.request?.status === 500) {
           toast.error("Problème lors de la suppression de l'activité.", {
@@ -55,6 +62,7 @@ export default function DeleteActivity({
 }
 
 DeleteActivity.propTypes = {
+  updateActivitiesAfterDelete: PropTypes.func.isRequired,
   selectedActivity: PropTypes.number.isRequired,
   setOpenDeleteModal: PropTypes.bool.isRequired,
 };

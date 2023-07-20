@@ -22,6 +22,8 @@ body {
 
   .logoutButton{
     @include logoutButton();
+    cursor: pointer;
+
   }
 }
 .activityModal {
@@ -32,6 +34,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin-top: 20px;
 
   div {
     @include buttonAddStyle;
@@ -49,10 +52,96 @@ body {
 
     .buttonAdd {
       @include buttonAddStyle;
+      cursor: pointer;
+
     }
     .buttonModify {
       @include buttonModifyStyle;
+          cursor: pointer;
+
     }
   }
   
+}
+.eatModal {
+  background-image: url("https://cdn.pixabay.com/photo/2017/06/09/19/35/smorgastarta-2388075_1280.jpg");
+  background-position: center;
+  background-size: cover;
+  @include modalStyle();
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 20px;
+
+  div {
+    @include buttonAddStyle;
+    background-color: $primary-color;
+    color: $color;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: transparent;
+
+    .buttonAdd {
+      @include buttonAddStyle;
+      cursor: pointer;
+
+    }
+    .buttonModify {
+      @include buttonModifyStyle;
+      cursor: pointer;
+
+    }
+  }
+  
+}
+.sleepModal {
+  background-image: url("https://images.pexels.com/photos/33612/sailboat-water-stockholm-ship.jpg?auto=compress&cs=tinysrgb&w=1600");
+  background-position: center;
+  background-size: cover;
+  @include modalStyle();
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 20px;
+
+
+  div {
+    @include buttonAddStyle;
+    background-color: $primary-color;
+    color: $color;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: transparent;
+
+    .buttonAdd {
+      @include buttonAddStyle;
+      cursor: pointer;
+    }
+    .buttonModify {
+      @include buttonModifyStyle;
+      cursor: pointer;
+
+    }
+  }
+  
+}
+@media screen and (min-width :750px) {
+  .modalesContainer {
+    display: flex; /* Afficher les activités en ligne (en "row") */
+    flex-wrap: wrap; /* Permettre à la ligne de se casser si nécessaire */
+    justify-content: space-around; /* Aligner les activités avec un espace entre elles */
+    gap: 20px; /* Ajouter un espace de 20px entre chaque activité */
+  }
 }

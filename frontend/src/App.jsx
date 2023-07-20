@@ -22,7 +22,7 @@ function App() {
         <Route path="/activities" element={<ActivityList />} />
         <Route path="/admin-dashbord" element={<AdminDashbord />} />
         <Route path="/activity-modify" element={<ActivityModify />} />
-        <Route path="/program" element={<Program />} />
+        <Route path="/program/:id" element={<Program />} />
         <Route path="/chatbot" element={<ChatBot />} />
       </Routes>
       <ToastContainer />

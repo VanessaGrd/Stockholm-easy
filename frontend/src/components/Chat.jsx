@@ -53,7 +53,6 @@ export default function Chat() {
           body: JSON.stringify(apiRequestBody),
         }
       );
-      console.info(response);
 
       if (!response.ok) {
         throw new Error("ChatGPT request failed.");

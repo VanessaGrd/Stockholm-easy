@@ -10,12 +10,13 @@ import logo from "../assets/logo.png";
 export default function Choice() {
   const navigate = useNavigate();
   const { logout } = useUserContext();
+  const { user } = useUserContext();
 
   const handleClick = () => {
     navigate("/activities");
   };
   const handleClickProgram = () => {
-    navigate("/program");
+    navigate(`/program/${user.id}`);
   };
   // Fonction de déconnexion
   const handleLogout = () => {
@@ -36,15 +37,27 @@ export default function Choice() {
         {" "}
         <img src={logoutButton} alt="logout-button" />
       </button>
-      <div className={styles.activityModal}>
-        <button type="button" onClick={handleClick}>
-          Activités
-        </button>
-      </div>
-      <div className={styles.programModal}>
-        <button type="button" onClick={handleClickProgram}>
-          Mon programme
-        </button>
+      <div className={styles.modalesContainer}>
+        <div className={styles.activityModal}>
+          <button type="button" onClick={handleClick}>
+            Activités
+          </button>
+        </div>
+        <div className={styles.eatModal}>
+          <button type="button" onClick={handleClick}>
+            Où manger ?
+          </button>
+        </div>
+        <div className={styles.sleepModal}>
+          <button type="button" onClick={handleClick}>
+            Où dormir ?
+          </button>
+        </div>
+        <div className={styles.programModal}>
+          <button type="button" onClick={handleClickProgram}>
+            Mon programme
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { UserContextProvider } from "./contexts/UserContext";
 import App from "./App";
 import { ActivityContextProvider } from "./contexts/ActivityContext";
+import { ProgramContextProvider } from "./contexts/ProgramContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -12,7 +13,9 @@ root.render(
   <BrowserRouter>
     <UserContextProvider>
       <ActivityContextProvider>
-        <App />
+        <ProgramContextProvider>
+          <App />
+        </ProgramContextProvider>
       </ActivityContextProvider>
     </UserContextProvider>
   </BrowserRouter>

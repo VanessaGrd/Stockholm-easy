@@ -1,11 +1,10 @@
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
-
-import ActivityProgramCard from "../components/ActivityProgramCard";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 import MenuBurger from "../components/MenuBurger";
+
 import { useUserContext } from "../contexts/UserContext";
 import styles from "./Program.module.scss";
 import logoutButton from "../assets/logout.svg";
@@ -16,26 +15,17 @@ const apiBaseUrl = import.meta.env.VITE_BACKEND_URL;
 export default function Program() {
   const navigate = useNavigate();
   const { logout } = useUserContext();
+  const [programActivities, setProgramActivities] = useState();
   const { id } = useParams();
-  const [programActivities, setProgramActivities] = useState([]);
-  const { user } = useUserContext();
 
   useEffect(() => {
-    // Récupérer les activités ajoutées par l'utilisateur en utilisant l'ID de l'utilisateur
-    const fetchProgramActivities = async () => {
-      try {
-        const response = await axios.get(`${apiBaseUrl}/program-user/${id}`);
-        /* eslint-disable */
-        console.log(response.data);
-        setProgramActivities(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    /* eslint-disable */
-    fetchProgramActivities();
-  }, [user.id]);
-  console.log(user.id);
+    axios
+      .get(`${apiBaseUrl}/program-user/${id}`)
+      .then((response) => setProgramActivities(response.data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  if (!programActivities) return null;
 
   const handleLogout = () => {
     logout();
@@ -57,13 +47,25 @@ export default function Program() {
         {" "}
         <img src={logoutButton} alt="logout-button" />
       </button>
-      <div className={styles.programContainer}>
-        <h1>Activités ajoutées</h1>
-        <div className={styles.activity_list_container}>
-          {programActivities.map((activity) => (
-            <ActivityProgramCard key={activity.id} activity={activity} />
-          ))}
-        </div>
+      <h2>Mon programme</h2>
+      <div className={styles.activity_list_container}>
+        {programActivities.map((activity) => (
+          <div className={styles.activity_card_container}>
+            <div key={activity.program_id} className={styles.leftContainer}>
+              <h2> {activity.activity_name}</h2>
+              <p>Adresse : {activity.activity_address}</p>
+              <p>Horaires : {activity.activity_openingHours}</p>
+              <p>Prix : {activity.activity_price}€</p>
+            </div>
+
+            <div className={styles.rightContainer}>
+              <img
+                src={activity.activity_picture}
+                alt={activity.activity_name}
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -11,13 +11,14 @@
   display: flex;
   @include modalStyle;
   background-color: $secondary-color;
-  padding: 5px;
   flex-direction: column;
   margin-bottom: 20px;
  
   .modifyButton{
     @include buttonModifyStyle();
-   
+    color: $secondary-color;
+   margin-bottom: 10px;
+   cursor: pointer;
   }
   .buttonContainer{
     width: 100%;
@@ -29,10 +30,14 @@
       @include buttonAddStyle;
       background-color: $primary-color;
       color: $secondary-color;
+      cursor: pointer;
+
     }
 
     .deleteButton{
       @include buttonDeleteStyle;
+      cursor: pointer;
+
     }
   }
   .leftContainer {
@@ -63,6 +68,7 @@
     flex-direction: row;
     height: 100%;
     align-items: center;
+    padding: 10px;
 
    
   }

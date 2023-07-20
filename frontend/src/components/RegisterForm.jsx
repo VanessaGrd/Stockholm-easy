@@ -16,6 +16,7 @@ export default function InscriptionForm() {
       email: "",
       password: "",
       confirmPassword: "",
+      role: "user",
     },
     validationSchema,
 
