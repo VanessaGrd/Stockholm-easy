@@ -20,6 +20,14 @@ export default function ActivityCard({ activity }) {
     const activityData = {
       user_id: userContext.user.id,
       activity_id: activity.id,
+
+      activity_name: activity.name,
+
+      activity_address: activity.address,
+
+      activity_openingHours: activity.openingHours,
+
+      activity_price: activity.price,
     };
     /* eslint-disable */
 

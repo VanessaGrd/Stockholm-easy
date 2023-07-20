@@ -1,30 +1,41 @@
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import Navbar from "../components/Navbar";
+
+import ActivityProgramCard from "../components/ActivityProgramCard";
+import MenuBurger from "../components/MenuBurger";
 import { useUserContext } from "../contexts/UserContext";
 import styles from "./Program.module.scss";
 import logoutButton from "../assets/logout.svg";
 import logo from "../assets/logo.png";
-import ActivityCard from "../components/ActivityCard";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const apiBaseUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function Program() {
   const navigate = useNavigate();
   const { logout } = useUserContext();
-  const [program, setProgram] = useState([]);
+  const { id } = useParams();
+  const [programActivities, setProgramActivities] = useState([]);
+  const { user } = useUserContext();
 
   useEffect(() => {
-    axios
-      .get(`${BACKEND_URL}/program`)
-      .then((response) => setProgram(response.data))
-      .catch((err) => console.error(err));
-  }, []);
-  // Fonction de déconnexion
-  console.info(program);
+    // Récupérer les activités ajoutées par l'utilisateur en utilisant l'ID de l'utilisateur
+    const fetchProgramActivities = async () => {
+      try {
+        const response = await axios.get(`${apiBaseUrl}/program-user/${id}`);
+        /* eslint-disable */
+        console.log(response.data);
+        setProgramActivities(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    /* eslint-disable */
+    fetchProgramActivities();
+  }, [user.id]);
+  console.log(user.id);
 
   const handleLogout = () => {
     logout();
@@ -34,7 +45,7 @@ export default function Program() {
 
   return (
     <div className={styles.pageContainer}>
-      <Navbar />
+      <MenuBurger />
       <div className={styles.logo}>
         <img src={logo} alt="logo" />
       </div>
@@ -46,10 +57,13 @@ export default function Program() {
         {" "}
         <img src={logoutButton} alt="logout-button" />
       </button>
-      <div className={styles.activity_list_container}>
-        {program.map((activity) => (
-          <ActivityCard key={activity.id} activity={activity} />
-        ))}
+      <div className={styles.programContainer}>
+        <h1>Activités ajoutées</h1>
+        <div className={styles.activity_list_container}>
+          {programActivities.map((activity) => (
+            <ActivityProgramCard key={activity.id} activity={activity} />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-import Navbar from "../components/Navbar";
+import MenuBurger from "../components/MenuBurger";
 import { useUserContext } from "../contexts/UserContext";
 
 import ActivityCard from "../components/ActivityCard";
@@ -33,7 +33,7 @@ export default function ActivityList() {
   };
   return (
     <div className={styles.pageContainer}>
-      <Navbar />
+      <MenuBurger />
       <div className={styles.logo}>
         <img src={logo} alt="logo" />
       </div>

@@ -85,4 +85,4 @@ CREATE TABLE program (
 ) ENGINE=InnoDB;
 
 INSERT INTO program (user_id, activity_id)
-VALUES ( 2, 2);
+VALUES ( 2, 1);
