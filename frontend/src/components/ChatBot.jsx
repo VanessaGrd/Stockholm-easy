@@ -82,7 +82,7 @@ export default function ChatBot() {
           <img src={logoutButton} alt="logout-button" />
         </button>
       </div>
-      <h1>ChatBot</h1>
+      <h1>Traducteur</h1>
       <div className={styles.chatbox}>
         {chat.map((messages, index) => (
           // eslint-disable-next-line react/no-array-index-key
