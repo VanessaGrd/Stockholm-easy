@@ -26,16 +26,19 @@
     h2{
       margin-bottom: 20px;
       margin-top: 30px;
+
      }
   .activity_card_container {
     display: flex;
-    background: rgb(0,87,152);
-    background: linear-gradient(90deg, rgba(0,87,152,1) 0%, rgba(0,87,152,1) 36%, rgba(255,255,255,1) 100%);;  padding: 5px;
+    background: #00B4DB;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
     flex-direction: row;
     margin-bottom: 20px;
     width: 321px;
-    height: 248px;
-    color: $color;
+    height: 208px;
+    color: black;
     align-items: center;
     justify-content: center;
     border-radius: 20px;
@@ -44,16 +47,16 @@
 
     .leftContainer {
       width: 60%;
-      height: 100%;
+      height: 80%;
       display: flex;
       justify-content: center;
       flex-direction: column;
       h2 {
-        color: $primary-color;
+        color: black;
         margin-top: 10px;
       }
       p {
-        color: $primary-color;
+        color: black;
       }
     }
     .rightContainer {

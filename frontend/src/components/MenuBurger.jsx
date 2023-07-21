@@ -50,6 +50,10 @@ export default function MenuBurger() {
           {" "}
           Mon programme
         </Link>
+        <br />
+        <Link to="/chatbot" className={styles.menuLink}>
+          Traducteur
+        </Link>
       </Menu>
     </div>
   );
