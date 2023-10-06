@@ -1,3 +1,4 @@
+
 SET  FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS user;
@@ -66,14 +67,14 @@ VALUES
   'Galärvarvsvägen 14 115 21 Stockholm',
 '10h00-17h00',
 '24',
-'https://cdn.pixabay.com/photo/2015/10/27/08/50/vasa-1008504_1280.jpg'
+'https://images.unsplash.com/photo-1675068176923-d2fa965ed360?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80'
 ),
 (
   'Palais Royal',
   'Slottsbacken 1, Old Town (Gamla Stan)',
 '8h30-18h00',
 '19',
-'https://images.pexels.com/photos/5713891/pexels-photo-5713891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+'https://images.unsplash.com/photo-1622647503888-2303abf11fb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
 
 ),
 (
@@ -88,7 +89,7 @@ VALUES
   'Djurgårdsvägen 68, 115 21 Stockholm',
   '10h00-20h00',
   30,
-  'https://images.pexels.com/photos/3693108/pexels-photo-3693108.jpeg?auto=compress&cs=tinysrgb&w=1600'
+  'https://images.unsplash.com/photo-1560027602-0393d6fa052d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
 ),
 (
   'Gröna Lund Amusement Park',
@@ -102,7 +103,7 @@ VALUES
   'Gamla Stan, Stockholm',
   'Toute la journée',
   0,
-  'https://images.pexels.com/photos/11330281/pexels-photo-11330281.jpeg?auto=compress&cs=tinysrgb&w=1600'
+  'https://images.unsplash.com/photo-1601806206217-97fdee6fb97b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80'
 );
 
 DROP TABLE IF EXISTS program;

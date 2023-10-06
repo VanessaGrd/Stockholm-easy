@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { useUserContext } from "../contexts/UserContext";
 import APIService from "../services/APIService";
 import "react-toastify/dist/ReactToastify.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo2.svg";
 import styles from "./Login.module.scss";
 
 export default function Login() {

@@ -4,14 +4,20 @@
   button {
     @include buttonAddStyle();
     margin-bottom: 10px;
+    transition: background-color 0.3s, color 0.3s;
   }
-}
+   
+  }
+     button:hover {
+       background-color: white;
+       color: $secondary-color;
+     }
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  h2 {
+h2 {
     margin-top: 20px;
     margin-bottom: 10px;
   }
@@ -19,4 +25,11 @@
   .bg {
     width: 100px;
   }
+}
+
+@media screen and (min-width: 391px) {
+  .form{
+    margin-top: 100px;
+  }
+  
 }

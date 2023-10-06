@@ -1,60 +1,43 @@
-import React from "react";
-import Button from "@mui/material/Button";
-
-import Menu from "@mui/material/Menu";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useUserContext } from "../contexts/UserContext";
-
-import menuburger from "../assets/menuburger.svg";
+import logout2 from "../assets/logout2.svg";
+import program from "../assets/program.svg";
+import choice from "../assets/choice.svg";
 import styles from "./MenuBurger.module.scss";
 
 export default function MenuBurger() {
-  const { user } = useUserContext();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const navigate = useNavigate();
+  const { logout } = useUserContext();
+  // Fonction de déconnexion
+  const handleLogout = () => {
+    logout();
+    toast.success("Déconnexion réussie !");
+    navigate("/login");
   };
 
   return (
-    <div className={styles.burgerButton}>
-      <Button
-        id="basic-button"
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-      >
-        <img src={menuburger} alt="menu-burgerButton" />
-      </Button>
-      <Menu
-        className={styles.menu}
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-        PaperProps={{ style: { backgroundColor: "#005798" } }}
-      >
-        {/* Move the links outside the MenuItem */}
-        <Link to="/choice" className={styles.menuLink}>
-          Accueil
-        </Link>{" "}
-        <br />
-        <Link to={`/program/${user.id}`} className={styles.menuLink}>
-          {" "}
-          Mon programme
-        </Link>
-        <br />
-        <Link to="/chatbot" className={styles.menuLink}>
-          Traducteur
-        </Link>
-      </Menu>
-    </div>
+    <nav className={styles.nav}>
+      <input id="menu" type="checkbox" />
+      <label htmlFor="menu">Menu</label>
+      <ul className={styles.menu}>
+        <li>
+          <a onClick={handleLogout} href="#0">
+            <img src={logout2} alt="logout" />{" "}
+          </a>
+        </li>
+        <li>
+          <a href="#0">
+            <img src={program} alt="program" />{" "}
+          </a>
+        </li>
+        <li>
+          <a href="#0">
+            {" "}
+            <img src={choice} alt="choice" />{" "}
+          </a>
+        </li>
+      </ul>
+    </nav>
   );
 }

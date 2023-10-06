@@ -1,19 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-
-import { useUserContext } from "../contexts/UserContext";
 import "react-toastify/dist/ReactToastify.css";
-import logoutButton from "../assets/logout.svg";
-
 import styles from "./ChatBot.module.scss";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo2.svg";
 
 export default function ChatBot() {
   const [message, setMessage] = useState("");
   const [chat, setChat] = useState([]);
-  const navigate = useNavigate();
-  const { logout } = useUserContext();
 
   const handleSendMessage = () => {
     setChat((prevChat) => [...prevChat, { content: message, sender: "user" }]);
@@ -38,12 +30,7 @@ export default function ChatBot() {
       ]);
     }, 1000);
   };
-  // Fonction de déconnexion
-  const handleLogout = () => {
-    logout();
-    toast.success("Déconnexion réussie !");
-    navigate("/login");
-  };
+
   const getTranslation = (word) => {
     // Ajoutez ici un dictionnaire avec les traductions en suédois pour les mots de la vie courante
     const translations = {
@@ -73,14 +60,6 @@ export default function ChatBot() {
         <div className={styles.logo}>
           <img src={logo} alt="logo" />
         </div>
-        <button
-          className={styles.logoutButton}
-          type="button"
-          onClick={handleLogout}
-        >
-          {" "}
-          <img src={logoutButton} alt="logout-button" />
-        </button>
       </div>
       <h1>Traducteur</h1>
       <div className={styles.chatbox}>

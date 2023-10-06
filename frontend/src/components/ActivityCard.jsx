@@ -58,17 +58,25 @@ export default function ActivityCard({ activity }) {
 
   return (
     <div className={styles.activityButtonContainer}>
-      <div className={styles.activity_card_container}>
-        <div className={styles.leftContainer}>
-          <h2>{activity.name}</h2>
-          <p>Adresse : {activity.address}</p>
-          <p>Horaires : {activity.openingHours}</p>
-          <p>Prix : {activity.price}€</p>
-        </div>
-        <div className={styles.rightContainer}>
-          <img src={activity.picture} alt={activity.name} />
-        </div>{" "}
+      <div className={styles.rightContainer}>
+        <img src={activity.picture} alt={activity.name} />
       </div>{" "}
+      <div className={styles.leftContainer}>
+        <h2>{activity.name}</h2>
+        <p>
+          <strong>Adresse :</strong> {activity.address}
+        </p>
+        <p>
+          {" "}
+          <strong>Horaires : </strong>
+          {activity.openingHours}
+        </p>
+        <p>
+          {" "}
+          <strong>Prix : </strong>
+          {activity.price}€
+        </p>
+      </div>
       <button
         onClick={handleAddActivity}
         className={styles.modifyButton}

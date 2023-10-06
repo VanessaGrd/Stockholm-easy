@@ -9,7 +9,11 @@
 
 .logo {
   display: flex;
-  justify-content: center;
+  
+  img{
+    width: 12rem;
+  }
+  
 }
 
 .pageContainer {
@@ -30,4 +34,12 @@
     justify-content: space-around; /* Aligner les activités avec un espace entre elles */
     gap: 20px; /* Ajouter un espace de 20px entre chaque activité */
   }
+    .logo {
+      display: flex;
+      img{
+        width: 100%;
+      }
+  
+   
+    }
 }

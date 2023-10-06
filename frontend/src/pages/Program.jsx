@@ -1,20 +1,16 @@
 import "react-toastify/dist/ReactToastify.css";
-import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
 import MenuBurger from "../components/MenuBurger";
 
-import { useUserContext } from "../contexts/UserContext";
 import styles from "./Program.module.scss";
-import logoutButton from "../assets/logout.svg";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo2.svg";
 
 const apiBaseUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function Program() {
-  const navigate = useNavigate();
-  const { logout } = useUserContext();
   const [programActivities, setProgramActivities] = useState();
   const { id } = useParams();
   // récupère les informations du program en fonction du user_id
@@ -27,26 +23,13 @@ export default function Program() {
 
   if (!programActivities) return null;
 
-  const handleLogout = () => {
-    logout();
-    toast.success("Déconnexion réussie !");
-    navigate("/login");
-  };
-
   return (
     <div className={styles.pageContainer}>
       <MenuBurger />
       <div className={styles.logo}>
         <img src={logo} alt="logo" />
       </div>
-      <button
-        className={styles.logoutButton}
-        type="button"
-        onClick={handleLogout}
-      >
-        {" "}
-        <img src={logoutButton} alt="logout-button" />
-      </button>
+
       <h2>Mon programme</h2>
       <div className={styles.activity_list_container}>
         {programActivities.map((activity) => (

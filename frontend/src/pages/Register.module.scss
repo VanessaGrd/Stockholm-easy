@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Imprima&display=swap");
 @import "../../Variables/Variables.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -8,34 +9,86 @@
 }
 
 .logo {
-  display: flex;
-  justify-content: center;
+  display: none;
 }
 
-.navigateButton{
+.navigateButton {
   position: absolute;
   background-color: $secondary-color;
   border-radius: 10px;
-  color: $primary-color;
+  color: white;
   text-align: center;
+  align-items: center;
   display: flex;
   justify-content: center;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-  top:10px;
+  width: 150px;
+  top: 10px;
   right: 10px;
   font-size: 16px;
-  height: 55x;
+  font-weight: bold;
+  height: 55px;
   padding: 10px;
-}
-.presentation {
-  font-size: $font-size;
+  transition: background-color 0.3s, color 0.3s;
 
+}
+
+.navigateButton:hover {
+  background-color: white;
+  /* Couleur de fond au survol */
+  color: $secondary-color;
+  /* Couleur du texte au survol */
+}
+
+.presentation {
+  font-size: 16px;
   padding: 10px;
   text-align: center;
+  letter-spacing: 0.2em;
 
   h2 {
-    margin-top: 30px;
+    font-size: 36px;
+    margin-top: 80px;
+  }
+
+  .subtitle {
+    display: none;
+
+  }
+}
+
+
+@media screen and (min-width: 800px) {
+
+  .presentation {
+    font-size: 24px;
+    max-width: 40vw;
+    margin-top: 0px;
+    letter-spacing: 0.2em;
+
+
+    h2 {
+      font-size: 48px;
+      margin-top: 0px;
+
+    }
+
+    .subtitle {
+      display: flex;
+      font-size: 20px;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  .logo {
+    display: flex;
+    margin-left: 40px;
+    margin-bottom: 0px;
+  }
+
+  .page {
+    display: flex;
+    flex-direction: row;
   }
 }

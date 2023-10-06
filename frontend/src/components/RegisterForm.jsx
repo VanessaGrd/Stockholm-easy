@@ -35,7 +35,7 @@ export default function InscriptionForm() {
     },
   });
   const boxStyle = {
-    width: "70vw",
+    width: "50vw",
     height: "60vh",
   };
   const handleClick = () => {
@@ -48,7 +48,7 @@ export default function InscriptionForm() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "dark",
+        theme: "light",
       });
     }
   };
