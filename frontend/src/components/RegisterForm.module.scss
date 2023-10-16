@@ -2,16 +2,11 @@
 
 .button {
   button {
-    @include buttonAddStyle();
-    margin-bottom: 10px;
-    transition: background-color 0.3s, color 0.3s;
+ @include buttonStyle();
   }
    
   }
-     button:hover {
-       background-color: white;
-       color: $secondary-color;
-     }
+    
 .form {
   display: flex;
   flex-direction: column;
@@ -19,17 +14,15 @@
 
 h2 {
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
-  .bg {
-    width: 100px;
-  }
+
 }
 
 @media screen and (min-width: 391px) {
   .form{
-    margin-top: 100px;
+    margin-top: 20px;
   }
   
 }

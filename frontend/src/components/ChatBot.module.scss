@@ -28,7 +28,7 @@ input{
     left: 135px;
     height: 50px;
     width: 100px;
-    @include buttonAddStyle;
+    @include buttonStyle();
 }
 
 .messageSender{

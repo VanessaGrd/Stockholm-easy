@@ -1,8 +1,9 @@
 import { React } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Register.module.scss";
-import logo2 from "../assets/logo2.svg";
 import RegisterForm from "../components/RegisterForm";
+import Title from "../components/Title";
+import stockholm from "../assets/stockholm.jpeg";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -11,28 +12,27 @@ export default function Register() {
   };
   return (
     <div className={styles.page}>
-      <div>
-        <div className={styles.logo}>
-          <img src={logo2} alt="logo" />
-        </div>
-
-        <div className={styles.presentation}>
-          <h2>Välkomna 🇸🇪!👋</h2>
-          <br />
-          <h3>
-            Découvrez Stockholm à votre rythme avec notre application exclusive
-            !
-            <br />
-            <br />
-            <p className={styles.subtitle}>
-              Ajoutez vos activités préférées à votre programme personnalisé et
-              vivez une expérience inoubliable dans la magnifique capitale
-              suédoise.
-            </p>
-          </h3>
+      <div className={styles.pictureBlock}>
+        <img src={stockholm} alt="Stockholm" />
+        <div className={styles.registerBlock}>
+          <Title subTitle="Välkomna 🇸🇪!👋" />
+          <div className={styles.presentationBlock}>
+            <div className={styles.presentation}>
+              <h3>
+                Découvrez Stockholm à votre rythme !
+                <br />
+                <br />
+                <p className={styles.subtitle}>
+                  Ajoutez vos activités préférées à votre programme personnalisé
+                  et vivez une expérience inoubliable dans la magnifique
+                  capitale suédoise.
+                </p>
+              </h3>
+            </div>
+            <RegisterForm />
+          </div>
         </div>
       </div>
-      <RegisterForm />
       <button
         className={styles.navigateButton}
         type="button"

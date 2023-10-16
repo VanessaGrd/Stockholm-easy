@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./ActivityList.module.scss";
 import activityLogo from "../assets/activity.svg";
+import Title from "../components/Title";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -24,10 +25,10 @@ export default function ActivityList() {
   return (
     <div className={styles.pageContainer}>
       <MenuBurger />
+      <Title subTitle="Activités" />
       <div className={styles.logo}>
         <img src={activityLogo} alt="logo" />
       </div>
-
       <div className={styles.activity_list_container}>
         {listActivities.map((activity) => (
           <div className={styles.modalesContainer}>

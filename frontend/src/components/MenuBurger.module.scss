@@ -26,13 +26,6 @@ a {
   text-decoration: none;
 }
 
-body {
-font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-  text-align: center;
-  padding: 0 20px;
-  background: var(--light-grey);
-  color: var(--white);
-}
 
 .notification {
   position: absolute;
@@ -141,8 +134,8 @@ font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica
 
 @media screen and (min-width:800px) {
   .nav {
-  position: fixed;
-  top: -10rem;
+  position: absolute;
+  top: -15rem;
   left: 5rem;
   display: flex;
   justify-content: center;
@@ -150,10 +143,12 @@ font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica
   padding-bottom: 20px;
   border-radius: 5px 5px 25px 25px;
   margin: 300px auto 0;
+  z-index: 100;
 
 }
 .nav input:checked~.menu li:nth-child(1) {
-  top: -110px;
+  top: -20px;
+  left: calc(50% - 85px);
   transition-delay: 0.1s;
 }
 

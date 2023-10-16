@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import "./App.module.scss";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Choice from "./pages/Choice";
-import "./App.module.scss";
 import ActivityList from "./pages/ActivityList";
 import AdminDashbord from "./pages/AdminDashbord";
 import ActivityModify from "./pages/ActivityModify";
@@ -21,6 +21,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/choice" element={<Choice />} />
         <Route path="/activities" element={<ActivityList />} />
+        <Route path="/food" element={<ActivityList />} />
+
         <Route path="/admin-dashbord" element={<AdminDashbord />} />
         <Route path="/activity-modify" element={<ActivityModify />} />
         <Route path="/program/:id" element={<Program />} />

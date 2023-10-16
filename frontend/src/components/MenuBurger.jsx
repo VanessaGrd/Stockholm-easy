@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useUserContext } from "../contexts/UserContext";
 import logout2 from "../assets/logout2.svg";
@@ -8,6 +8,7 @@ import styles from "./MenuBurger.module.scss";
 
 export default function MenuBurger() {
   const navigate = useNavigate();
+  const { user } = useUserContext();
   const { logout } = useUserContext();
   // Fonction de déconnexion
   const handleLogout = () => {
@@ -27,15 +28,15 @@ export default function MenuBurger() {
           </a>
         </li>
         <li>
-          <a href="#0">
+          <Link to={`/program/${user.id}`}>
             <img src={program} alt="program" />{" "}
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#0">
+          <Link to="/choice">
             {" "}
             <img src={choice} alt="choice" />{" "}
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
