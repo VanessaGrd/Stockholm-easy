@@ -37,7 +37,7 @@ body {
   margin-top: 20px;
 
   div {
-    @include buttonAddStyle;
+    @include buttonStyle();
     background-color: $primary-color;
     color: black;
     align-items: center;
@@ -51,7 +51,7 @@ body {
     background-color: transparent;
 
     .buttonAdd {
-      @include buttonAddStyle;
+      @include buttonStyle();
       cursor: pointer;
 
     }
@@ -74,7 +74,7 @@ body {
   margin-top: 20px;
 
   div {
-    @include buttonAddStyle;
+    @include buttonStyle();
     background-color: $primary-color;
     color: black;
     align-items: center;
@@ -88,7 +88,7 @@ body {
     background-color: transparent;
 
     .buttonAdd {
-      @include buttonAddStyle;
+      @include buttonStyle();
       cursor: pointer;
 
     }
@@ -112,7 +112,7 @@ body {
 
 
   div {
-    @include buttonAddStyle;
+    @include buttonStyle();
     background-color: $primary-color;
     color: black;
     align-items: center;
@@ -126,7 +126,7 @@ body {
     background-color: transparent;
 
     .buttonAdd {
-      @include buttonAddStyle;
+      @include buttonStyle();
       cursor: pointer;
     }
     .buttonModify {

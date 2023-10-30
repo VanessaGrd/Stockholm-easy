@@ -5,35 +5,36 @@ import { useUserContext } from "../contexts/UserContext";
 import "react-toastify/dist/ReactToastify.css";
 import APIService from "../services/APIService";
 import styles from "./ActivityCard.module.scss";
+import restaurant from "../assets/restaurant.png";
 
-export default function ActivityCard({ activity }) {
+export default function FoodCard({ food }) {
   const userContext = useUserContext();
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   // ajout de l'activité à la liste de l'utilisateur
-  const handleAddActivity = async (event) => {
+  const handleFood = async (event) => {
     event.preventDefault();
     // vérification si l'id de l'utilisateur est présent dans le contexte utilisateur
     if (!userContext.user.id) {
       toast.error(
-        "Une information de l'utilisateur est manquante empêchant l'ajout de l'activité dans le programme !"
+        "Une information de l'utilisateur est manquante empêchant l'ajout du restaurant dans le programme !"
       );
       return;
     }
-    const activityData = {
+    const foodData = {
       user_id: userContext.user.id,
-      activity_id: activity.id,
+      food_id: food.id,
 
-      activity_name: activity.name,
+      food_name: food.name,
 
-      activity_address: activity.address,
+      food_address: food.address,
 
-      activity_openingHours: activity.openingHours,
+      food_price: food.price,
 
-      activity_price: activity.price,
+      food_website: food.website,
     };
     // Vérification si l'id de l'activité est dans "activityData"
-    if (!activityData.activity_id) {
+    if (!foodData.food_id) {
       toast.error(
         "Les informations d'utilisateur ou de session sont manquantes !"
       );
@@ -42,14 +43,14 @@ export default function ActivityCard({ activity }) {
         // Désactiver le bouton d'ajout après click
         setIsButtonDisabled(true);
         // Ajout de l'activité au programme de l'utilisateur
-        await APIService.post(`/program`, activityData);
-        toast.success("Votre activité a bien été enregistrée ! 👍", {
+        await APIService.post(`/program`, foodData);
+        toast.success("Votre restaurant a bien été enregistré ! 👍", {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 2000,
         });
       } catch (error) {
         toast.error(
-          "Une erreur s'est produite lors de l'enregistrement de l'activité dans le programme !"
+          "Une erreur s'est produite lors de l'enregistrement du restaurant dans le programme !"
         );
         console.error(error);
       }
@@ -58,27 +59,28 @@ export default function ActivityCard({ activity }) {
 
   return (
     <div className={styles.activityButtonContainer}>
-      <div className={styles.rightContainer}>
-        <img src={activity.picture} alt={activity.name} />
+      <div className={styles.logoContainer}>
+        <img src={restaurant} alt="restaurantLogo" />
       </div>{" "}
       <div className={styles.leftContainer}>
-        <h2>{activity.name}</h2>
+        <h2>{food.name}</h2>
         <p>
-          <strong>Adresse :</strong> {activity.address}
+          <strong>Adresse :</strong> {food.address}
         </p>
-        <p>
-          {" "}
-          <strong>Horaires : </strong>
-          {activity.openingHours}
-        </p>
+
         <p>
           {" "}
           <strong>Prix : </strong>
-          {activity.price}€
+          {food.price}€
         </p>
       </div>
+      <p>
+        {" "}
+        <strong>Site web : </strong>
+        {food.website}
+      </p>
       <button
-        onClick={handleAddActivity}
+        onClick={handleFood}
         className={styles.modifyButton}
         type="submit"
         disabled={isButtonDisabled}
@@ -89,13 +91,12 @@ export default function ActivityCard({ activity }) {
   );
 }
 
-ActivityCard.propTypes = {
-  activity: PropTypes.shape({
+FoodCard.propTypes = {
+  food: PropTypes.shape({
     name: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     address: PropTypes.string.isRequired,
-    openingHours: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    picture: PropTypes.string.isRequired,
+    website: PropTypes.string.isRequired,
   }).isRequired,
 };

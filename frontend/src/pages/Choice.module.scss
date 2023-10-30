@@ -1,28 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Imprima&display=swap");
 @import "../../Variables/Variables.scss";
+
 * {
   margin: 0;
   padding: 0;
   font-family: $font-family;
   color: $color;
 }
-body {
-  align-items: center;
-}
+
+
 .logo {
-  display: flex;
-  justify-content: center;
+  display: none;
+
 }
+
 .pageContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-.logoutButton {
-@include logoutButton();
+
+  .modalesContainer{
+    margin-bottom: 20px;
+  }
 }
 
-}
 
 .activityModal {
   background-image: url("https://cdn.pixabay.com/photo/2019/09/15/14/33/city-4478464_1280.jpg");
@@ -33,62 +34,208 @@ body {
 
 
   button {
-    @include buttonAddStyle;
-    background-color: $primary-color;
-    color: black; 
+
+
+    background-color: #111827;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
     cursor: pointer;
+    flex: 0 0 auto;
+    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    padding: .75rem 1.2rem;
+    text-align: center;
+    text-decoration: none #6B7280 solid;
+    text-decoration-thickness: auto;
+    transition-duration: .2s;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: auto;
   }
+
+  button:hover {
+    background-color: #374151;
+  }
+
+  button:focus {
+    box-shadow: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+
 }
-  .programModal{
-    background-image: url("https://cdn.pixabay.com/photo/2017/08/29/12/07/adult-2693054_1280.jpg");
-    background-position: center;
-    background-size: cover;
-    margin-top: 20px;
-    @include modalStyle();
-  
-    button {
-      @include buttonAddStyle;
-      background-color: $primary-color;
-      color: black;
-      width: auto;
-      padding: 10px;
-      cursor: pointer;
+
+.programModal {
+  background-image: url("https://cdn.pixabay.com/photo/2017/08/29/12/07/adult-2693054_1280.jpg");
+  background-position: center;
+  background-size: cover;
+  margin-top: 20px;
+  @include modalStyle();
+
+  button {
+
+
+    background-color: #111827;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    padding: .75rem 1.2rem;
+    text-align: center;
+    text-decoration: none #6B7280 solid;
+    text-decoration-thickness: auto;
+    transition-duration: .2s;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: auto;
+  }
+
+  button:hover {
+    background-color: #374151;
+  }
+
+  button:focus {
+    box-shadow: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+
+}
+
+.eatModal {
+  background-image: url("https://cdn.pixabay.com/photo/2017/06/09/19/35/smorgastarta-2388075_1280.jpg");
+  background-position: center;
+  background-size: cover;
+  @include modalStyle();
+  margin-top: 20px;
+
+  button {
+
+
+    background-color: #111827;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    padding: .75rem 1.2rem;
+    text-align: center;
+    text-decoration: none #6B7280 solid;
+    text-decoration-thickness: auto;
+    transition-duration: .2s;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: auto;
+  }
+
+  button:hover {
+    background-color: #374151;
+  }
+
+  button:focus {
+    box-shadow: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+
+}
+
+.sleepModal {
+  background-image: url("https://images.pexels.com/photos/33612/sailboat-water-stockholm-ship.jpg?auto=compress&cs=tinysrgb&w=1600");
+  background-position: center;
+  background-size: cover;
+  @include modalStyle();
+  margin-top: 20px;
+
+  button {
+
+
+    background-color: #111827;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    padding: .75rem 1.2rem;
+    text-align: center;
+    text-decoration: none #6B7280 solid;
+    text-decoration-thickness: auto;
+    transition-duration: .2s;
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: auto;
+  }
+
+  button:hover {
+    background-color: #374151;
+  }
+
+  button:focus {
+    box-shadow: none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+
+}
+
+@media screen and (min-width :750px) {
+  .modalesContainer {
+    display: flex;
+    /* Afficher les activités en ligne (en "row") */
+    flex-wrap: wrap;
+    /* Permettre à la ligne de se casser si nécessaire */
+    justify-content: space-around;
+    /* Aligner les activités avec un espace entre elles */
+    gap: 20px;
+    /* Ajouter un espace de 20px entre chaque activité */
+  }
+
+  .pageContainer {
+
+    display: block;
+
+    .logo {
+      display: flex;
+      justify-content: center;
+
     }
   }
 
-  .eatModal {
-    background-image: url("https://cdn.pixabay.com/photo/2017/06/09/19/35/smorgastarta-2388075_1280.jpg");
-    background-position: center;
-    background-size: cover;
-    @include modalStyle();
-    margin-top: 20px;
-  
-    button {
-      @include buttonAddStyle;
-      background-color: $primary-color;
-      color: black;
-    }
-  }
-  .sleepModal {
-    background-image: url("https://images.pexels.com/photos/33612/sailboat-water-stockholm-ship.jpg?auto=compress&cs=tinysrgb&w=1600");
-    background-position: center;
-    background-size: cover;
-    @include modalStyle();
-    margin-top: 20px;
-  
-    button {
-      @include buttonAddStyle;
-      background-color: $primary-color;
-      color: black;
-      
-    }
-  }
- 
-  @media screen and (min-width :750px) {
-    .modalesContainer{
-      display: flex; /* Afficher les activités en ligne (en "row") */
-      flex-wrap: wrap; /* Permettre à la ligne de se casser si nécessaire */
-      justify-content: space-around; /* Aligner les activités avec un espace entre elles */
-      gap: 20px; /* Ajouter un espace de 20px entre chaque activité */
-    }
-  }
+
+}

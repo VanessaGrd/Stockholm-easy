@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import MenuBurger from "../components/MenuBurger";
 
-import ActivityCard from "../components/ActivityCard";
+import FoodCard from "../components/FoodCard";
 import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./ActivityList.module.scss";
@@ -13,12 +13,12 @@ import Title from "../components/Title";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default function ActivityList() {
-  const [listActivities, setListActivities] = useState([]);
+  const [listFood, setListFood] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${BACKEND_URL}/activity`)
-      .then((response) => setListActivities(response.data))
+      .get(`${BACKEND_URL}/food`)
+      .then((response) => setListFood(response.data))
       .catch((err) => console.error(err));
   }, []);
 
@@ -30,9 +30,9 @@ export default function ActivityList() {
         <img src={activityLogo} alt="logo" />
       </div>
       <div className={styles.activity_list_container}>
-        {listActivities.map((activity) => (
+        {listFood.map((food) => (
           <div className={styles.modalesContainer}>
-            <ActivityCard key={activity.id} activity={activity} />
+            <FoodCard key={food.id} food={food} />
           </div>
         ))}
       </div>

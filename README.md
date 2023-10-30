@@ -1,7 +1,10 @@
+     WELCOME TO STOCKHOLM EASY !
+
 ## Concept
 
 This application aims to introduce tourists to the city of Stockholm.
 You will be able to find in it a user part and an administrator part.
+This website is responsive, for mobile and desktop.
 The stack used is React/JS, Express, Node, SQL, HTML, SCSS.
 
 ## Setup & Use
