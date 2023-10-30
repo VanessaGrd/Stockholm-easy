@@ -12,6 +12,13 @@ class ProgramManager extends AbstractManager {
     );
   }
 
+  insertFood(program) {
+    return this.database.query(
+      `insert into ${this.table} (user_id, food_id) values (?, ?)`,
+      [program.user_id, program.food_id]
+    );
+  }
+
   findActivityByUserId(userId) {
     return this.database.query(
       `SELECT program.id AS program_id, user_id, activity_id, activity.name AS activity_name, activity.address AS activity_address, activity.openingHours AS activity_openingHours, activity.price AS activity_price, activity.picture AS activity_picture 

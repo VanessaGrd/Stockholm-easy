@@ -26,7 +26,7 @@ VALUES
   "Ariste",
   "Morin",
   "exemple1@gmail.com",
-  "$argon2id$v=19$m=16,t=2,p=1$VXNlclRlc3Q$XzGj0Ga+vdXVd0nKFeLzcg",
+  "$argon2id$v=19$m=16,t=2,p=1$RXhlbXBsZVRlc3Q$WFUZlBFnvgOqoSZytZitaYhBVA",
   "user"
  
 ),
@@ -137,7 +137,21 @@ INSERT INTO
 food (name, address, price, website)
 VALUES
 ('Restaurant Tradition',
-  'Österlånggatan 1, 113 53 Stockholm, Suède',
+  'Österlånggatan 1',
   "€€-€€€",
     'https://www.gronalund.com/'
-);
+),
+('Stockholms Gästabud',
+  'Österlånggatan 7',
+  "€€",
+    'https://www.facebook.com/stockholmsgastabud'
+),
+('Lilla ego',
+'Västmannagatan 69',
+'€€€',
+'https://www.lillaego.com/'),
+
+('Wedholms fisk',
+'Arsenalsgatan 1',
+'€€€€',
+'https://wedholmsfisk.se/');

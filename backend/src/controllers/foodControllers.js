@@ -1,20 +1,8 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.program
+  models.food
     .findAll()
-    .then(([rows]) => {
-      res.send(rows);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-const browseProgram = (req, res) => {
-  const userId = req.params.id;
-  models.program
-    .findActivityByUserId(userId)
     .then(([rows]) => {
       res.send(rows);
     })
@@ -26,7 +14,7 @@ const browseProgram = (req, res) => {
 
 const read = (req, res) => {
   const id = parseInt(req.params.id, 10);
-  models.program
+  models.food
     .find(id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -42,14 +30,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const program = req.body;
+  const food = req.body;
 
   // TODO validations (length, format...)
 
-  program.id = parseInt(req.params.id, 10);
+  food.id = parseInt(req.params.id, 10);
 
-  models.program
-    .update(program)
+  models.food
+    .update(food)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -64,30 +52,14 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const program = req.body;
+  const food = req.body;
 
   // TODO validations (length, format...)
 
-  models.program
-    .insert(program)
+  models.food
+    .insert(food)
     .then(([result]) => {
-      res.location(`/program/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-const addFood = (req, res) => {
-  const program = req.body;
-
-  // TODO validations (length, format...)
-
-  models.program
-    .insertFood(program)
-    .then(([result]) => {
-      res.location(`/program/${result.insertId}`).sendStatus(201);
+      res.location(`/food/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -96,7 +68,7 @@ const addFood = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.program
+  models.food
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -113,10 +85,8 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
-  browseProgram,
   read,
   edit,
   add,
-  addFood,
   destroy,
 };

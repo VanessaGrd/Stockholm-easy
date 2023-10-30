@@ -44,6 +44,11 @@ const ActivityManager = require("./ActivityManager");
 models.activity = new ActivityManager();
 models.activity.setDatabase(pool);
 
+const FoodManager = require("./FoodManager");
+
+models.food = new FoodManager();
+models.food.setDatabase(pool);
+
 const ProgramManager = require("./ProgramManager");
 
 models.program = new ProgramManager();

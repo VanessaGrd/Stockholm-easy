@@ -32,6 +32,15 @@ router.put("/activity/:id", activityControllers.edit);
 router.delete("/activity/:id", activityControllers.destroy);
 module.exports = router;
 
+// Food
+const foodControllers = require("./controllers/foodControllers");
+
+router.get("/food", foodControllers.browse);
+router.get("/food/:id", foodControllers.read);
+router.post("/food", foodControllers.add);
+router.put("/food/:id", foodControllers.edit);
+router.delete("/food/:id", foodControllers.destroy);
+module.exports = router;
 // Program
 const programControllers = require("./controllers/programControllers");
 
@@ -39,6 +48,7 @@ router.get("/program", programControllers.browse);
 router.get("/program-user/:id", programControllers.browseProgram);
 router.get("/program/:id", programControllers.read);
 router.post("/program", programControllers.add);
+router.post("/program", programControllers.addFood);
 router.put("/program/:id", programControllers.edit);
 router.delete("/program/:id", programControllers.destroy);
 module.exports = router;
