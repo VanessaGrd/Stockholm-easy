@@ -26,7 +26,7 @@ VALUES
   "Ariste",
   "Morin",
   "exemple1@gmail.com",
-  "$argon2id$v=19$m=16,t=2,p=1$RXhlbXBsZVRlc3Q$WFUZlBFnvgOqoSZytZitaYhBVA",
+  "$argon2id$v=19$m=16,t=2,p=1$VGVzdFRlc3Q$K1DJE2OHu/x5ItDIN1Yn9Q",
   "user"
  
 ),
