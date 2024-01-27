@@ -22,9 +22,7 @@
     "dev-back": "cross-env-shell \"cd ./backend && $npm_package_config_cli run dev\"",
     "lint": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run lint && cd ../backend && $npm_package_config_cli run lint\"",
     "fix": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run fix && cd ../backend && $npm_package_config_cli run fix\"",
-    "start": "cross-env-shell \"cd ./backend && node server.js\"",
-    "start:frontend": "cross-env-shell \"cd ./frontend && $npm_package_config_cli run start\"",
-    "build": "npm run build"  
+    "build": "npm run build"
   },
   "keywords": [],
   "author": "Wild Code School",
