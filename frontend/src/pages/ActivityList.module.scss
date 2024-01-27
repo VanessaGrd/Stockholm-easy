@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Imprima&display=swap");
 @import "../../Variables/Variables.scss";
+
 * {
   margin: 0;
   padding: 0;
@@ -7,27 +8,37 @@
   color: $color;
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-}
 
 .pageContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
   height: 100vh;
+align-items: center;
 
-  .logoutButton {
-    @include logoutButton();
-    cursor: pointer;
-    }
+.logo{
+  display: flex;
 }
+}
+
 @media screen and (min-width :750px) {
+
+  .pageContainer{
+    align-items: normal;
+    .logo {
+        display: none;
+    
+      }
   .activity_list_container {
-    display: flex; /* Afficher les activités en ligne (en "row") */
-    flex-wrap: wrap; /* Permettre à la ligne de se casser si nécessaire */
-    justify-content: space-around; /* Aligner les activités avec un espace entre elles */
-    gap: 20px; /* Ajouter un espace de 20px entre chaque activité */
+    display: flex;
+    /* Afficher les activités en ligne (en "row") */
+    flex-wrap: wrap;
+    /* Permettre à la ligne de se casser si nécessaire */
+    justify-content: space-around;
+    /* Aligner les activités avec un espace entre elles */
+    gap: 20px;
+    /* Ajouter un espace de 20px entre chaque activité */
+    margin-top: 5rem;
   }
+  }
+  
 }

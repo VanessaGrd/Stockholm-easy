@@ -37,21 +37,21 @@ const verifyPassword = async (req, res) => {
     .then((isVerified) => {
       if (isVerified) {
         const payload = { sub: req.user.id, role: req.user.role || "user" };
-        /* eslint-disable */
         const token = jwt.sign(payload, JWT_SECRET, {
           expiresIn: JWT_TIMING,
         });
         delete req.body.password;
         delete req.user.hashedPassword;
 
-        res.cookie("access_token", token, {
-          httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
-        }).send(req.user);
+        res
+          .cookie("access_token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+          })
+          .send(req.user);
       } else res.sendStatus(401);
     })
     .catch((err) => {
-      // do something with err
       console.error(err);
       res.sendStatus(400);
     });

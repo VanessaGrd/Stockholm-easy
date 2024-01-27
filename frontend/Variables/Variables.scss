@@ -1,27 +1,45 @@
-$font-size: 16px;
+$font-size: 24px;
 $font-family: "Imprima", sans-serif;
-$color: #523e27;
+$color: #000000;
 $primary-color: #f0cc1e;
 $secondary-color: #005798;
 $delete-color:red;
 
-@mixin buttonAddStyle() {
-  width: 126px;
-  height: 45px;
-  background-color: $secondary-color;
-  color: $primary-color;
-  font-size: 20px;
-  font-weight: 700;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 10px;
-  border: none;
+@mixin buttonStyle() {
+align-items: center;
+  background-color: #0A66C2;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Imprima",
+    sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  margin-bottom: 20px;
 }
 @mixin buttonModifyStyle() {
   width: 126px;
   height: 45px;
-  background: rgb(255,255,255);
-background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(240,204,30,1) 73%, rgba(240,204,30,1) 100%);
-  color: $color;
+ background-color: white;
+  color: $secondary-color;
   font-size: 20px;
   font-weight: 700;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -33,21 +51,25 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(240,204,30,1) 7
   width: 126px;
   height: 45px;
   
-  color: red;
+  color: black;
   font-size: 20px;
   font-weight: 700;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
   border: none;
 }
+
+@mixin buttonChoiceStyle(){
+  background-color: black;
+  color: white;
+}
 @mixin modalStyle() {
   width: 321px;
   height: 248px;
   display: flex;
-  color: $color;
+  color: black;
   align-items: center;
   justify-content: center;
- 
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -58,4 +80,5 @@ background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(240,204,30,1) 7
   right: 10px;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }

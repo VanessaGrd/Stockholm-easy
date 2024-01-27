@@ -79,6 +79,22 @@ const add = (req, res) => {
     });
 };
 
+const addFood = (req, res) => {
+  const program = req.body;
+
+  // TODO validations (length, format...)
+
+  models.program
+    .insertFood(program)
+    .then(([result]) => {
+      res.location(`/program/${result.insertId}`).sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const destroy = (req, res) => {
   models.program
     .delete(req.params.id)
@@ -101,5 +117,6 @@ module.exports = {
   read,
   edit,
   add,
+  addFood,
   destroy,
 };

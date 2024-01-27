@@ -7,8 +7,10 @@ import { toast } from "react-toastify";
 import { useUserContext } from "../contexts/UserContext";
 import APIService from "../services/APIService";
 import "react-toastify/dist/ReactToastify.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo2.svg";
 import styles from "./Login.module.scss";
+import Title from "../components/Title";
+import loginPicture from "../assets/loginPicture.jpg";
 
 export default function Login() {
   const validationSchema = yup.object({
@@ -92,37 +94,45 @@ export default function Login() {
   };
 
   return (
-    <div className={styles.pageContainer}>
-      <div className={styles.logo}>
-        <img src={logo} alt="logo" />
-      </div>
+    <div className={styles.pictureBlock}>
+      <img
+        className={styles.pictureStockholm}
+        src={loginPicture}
+        alt="Stockholm"
+      />
 
-      <div className={styles.login_box}>
-        <h3>Veuillez rentrer vos identifiants</h3>
-        <form action="login" onSubmit={formik.handleSubmit}>
-          <div className={styles.inputContainer}>
-            <TextField
-              type="email"
-              name="email"
-              id="email"
-              label="Votre email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-            />
+      <div className={styles.pageContainer}>
+        <Title subTitle="Connexion" />
+        <div className={styles.login_box}>
+          {" "}
+          <form action="login" onSubmit={formik.handleSubmit}>
+            <div className={styles.inputContainer}>
+              <TextField
+                type="email"
+                name="email"
+                id="email"
+                label="Votre email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+              />
 
-            <TextField
-              type="password"
-              name="password"
-              id="password"
-              label="Password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-            />
-            <Button onClick={handleClick} variant="contained" type="submit">
-              Connexion
-            </Button>
+              <TextField
+                type="password"
+                name="password"
+                id="password"
+                label="Password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+              />
+              <Button onClick={handleClick} variant="contained" type="submit">
+                Connexion
+              </Button>
+            </div>
+          </form>
+          <div className={styles.logo}>
+            <img src={logo} alt="logo" />
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

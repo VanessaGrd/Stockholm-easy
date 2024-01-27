@@ -5,6 +5,7 @@ import { UserContextProvider } from "./contexts/UserContext";
 import App from "./App";
 import { ActivityContextProvider } from "./contexts/ActivityContext";
 import { ProgramContextProvider } from "./contexts/ProgramContext";
+import { FoodContextProvider } from "./contexts/FoodContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -13,9 +14,11 @@ root.render(
   <BrowserRouter>
     <UserContextProvider>
       <ActivityContextProvider>
-        <ProgramContextProvider>
-          <App />
-        </ProgramContextProvider>
+        <FoodContextProvider>
+          <ProgramContextProvider>
+            <App />
+          </ProgramContextProvider>
+        </FoodContextProvider>
       </ActivityContextProvider>
     </UserContextProvider>
   </BrowserRouter>

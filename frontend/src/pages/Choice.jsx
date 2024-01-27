@@ -1,15 +1,14 @@
 import { React } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+
 import styles from "./Choice.module.scss";
 import { useUserContext } from "../contexts/UserContext";
 import "react-toastify/dist/ReactToastify.css";
-import logoutButton from "../assets/logout.svg";
-import logo from "../assets/logo.png";
+import map from "../assets/map.svg";
+import Title from "../components/Title";
 
 export default function Choice() {
   const navigate = useNavigate();
-  const { logout } = useUserContext();
   const { user } = useUserContext();
 
   const handleClick = () => {
@@ -18,25 +17,15 @@ export default function Choice() {
   const handleClickProgram = () => {
     navigate(`/program/${user.id}`);
   };
-  // Fonction de déconnexion
-  const handleLogout = () => {
-    logout();
-    toast.success("Déconnexion réussie !");
-    navigate("/login");
+  const handleClickFood = () => {
+    navigate("/food");
   };
   return (
     <div className={styles.pageContainer}>
+      <Title subTitle="Sélection" />
       <div className={styles.logo}>
-        <img src={logo} alt="logo" />
+        <img src={map} alt="logo" />
       </div>
-      <button
-        className={styles.logoutButton}
-        type="button"
-        onClick={handleLogout}
-      >
-        {" "}
-        <img src={logoutButton} alt="logout-button" />
-      </button>
       <div className={styles.modalesContainer}>
         <div className={styles.activityModal}>
           <button type="button" onClick={handleClick}>
@@ -44,7 +33,7 @@ export default function Choice() {
           </button>
         </div>
         <div className={styles.eatModal}>
-          <button type="button" onClick={handleClick}>
+          <button type="button" onClick={handleClickFood}>
             Où manger ?
           </button>
         </div>
